@@ -1,0 +1,31 @@
+<%- include('include/header'); %>
+    <h1>Update User</h1>
+    <form action="/items/update/<%=userData._id%>" method="POST">
+            <div>
+                <label for="">Item</label>
+                <input type="text" name="name" value="<%=userData.name%>" placeholder="Enter your item">
+            </div>
+            <div>
+                <label for="">color</label>
+                <input type="text" name="color" value="<%=userData.color%>" placeholder="Enter your item color">
+            </div>
+            <div>
+                <label for="">brand</label>
+                <input type="brand" name="brand" value="<%=userData.brand%>" placeholder="Enter your brand">
+            </div>
+            <div>
+                <label for="">price</label>
+                <input type="price" name="price" value="<%=userData.price%>" placeholder="Enter your price">
+            </div>
+            <div>
+                <label for="">image</label>
+                <input type="image" name="imagepath" value="<%=userData.imagepath%>" placeholder="Enter your image">
+            </div>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+    </form>
+
+    </body>
+
+    </html>

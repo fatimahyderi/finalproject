@@ -1,0 +1,35 @@
+body{
+    background-color: burlywood;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    text-align: center;
+}
+form, table{
+    max-width: 650px;
+    margin: auto;
+}
+table tr td, table tr th{
+    padding: 10px;
+    border: 1px solid;
+}
+form > div{
+    margin-bottom: 20px;
+    width: 100%;
+}
+form > div > label {
+    font-weight: bold;
+}
+form > div > input {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+form > div > input[type=submit] {
+    background-color: coral;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
