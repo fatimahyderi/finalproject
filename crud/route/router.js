@@ -1,5 +1,5 @@
 import express from 'express'
-import { create, update, createView, homeView, updateView , viewSingleProduct } from '../controller/controller.js'
+import { create, update, createView, homeView, updateView , viewSingleProduct, registeruser, findUser } from '../controller/controller.js'
 const router = express.Router();
 
 //Home route
@@ -17,4 +17,9 @@ router.get('/product/:id' , viewSingleProduct);
 router.post('/add', create);
 router.put('/update/:id', update);
 
+//Add User 
+router.post('/registeruser', registeruser)
+
+// Get Login User Data
+router.get('/users/:email', findUser)
 export { router };

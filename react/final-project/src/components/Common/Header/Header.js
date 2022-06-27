@@ -3,9 +3,11 @@ import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import {ShoppingCartContext} from '../../../App';
 
-function Header() {
-	const [cart] = useContext(ShoppingCartContext)
+function Header(props) {
+	const {cart} = props
 	const cartq = cart.length
+	const itemPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
+	console.log(cartq)
 	return (
 		<>
 
@@ -29,7 +31,7 @@ function Header() {
 										<div className="header-cart-menu d-flex align-items-center ml-auto">
 
 											<div className="cart">
-												<a href="/cart" id="header-cart-btn"><span className="cart_quantity">{cartq}</span> <i className="ti-bag"></i> Your Bag $20</a>
+												<a href="/cart" id="header-cart-btn"><span className="cart_quantity">{cartq}</span> <i className="ti-bag"></i> Your Bag {itemPrice}</a>
 
 												<ul className="cart-list">
 													<li>

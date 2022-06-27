@@ -8,14 +8,15 @@ import Testimonials from './Testimonials/Testimonials'
 import OfferArea from './Offer Area/OfferArea'
 import Footer from '../Common/Footer/Footer'
 
-function Main() {
+function Main(props) {
+  const {product, onAdd, cart} = props
   return (
     <>
-    <Header/>
+    <Header cart={cart}/>
     <Discount/>
     <Welcome/>
     <TopCategory/>
-    <NewArrival/>
+    <NewArrival product={product} onAdd={onAdd}/>
     <OfferArea/>
     <Testimonials/>
     <Footer/>

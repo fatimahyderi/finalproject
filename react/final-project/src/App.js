@@ -19,30 +19,89 @@ import ProductDesrip from "./components/Product Des/ProductDesrip";
 import Cart from "./components/Cart/Cart";
 import Checkout from "./components/Checkout/Checkout";
 import React from "react";
-import {useState} from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios'
+import Registeruser from "./components/Registeruser/Registeruser";
+import Login from "./components/Login/Login";
 
 export const ShoppingCartContext = React.createContext();
-function App() {
-	
-	const cartState = useState([]);
-    
 
-	
-	
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
+function App() {
+
+	// Getting products from database
+	const [product, getProduct] = useState([]);
+	const getProductData = () => {
+		axios.get('http://localhost:8080/items')
+			.then(function (response) {
+				// handle success
+				getProduct(response.data);
+			})
+			.catch(function (error) {
+				// handle error
+				console.log(error);
+			})
+			.then(function () {
+				// always executed
+			});
+	}
+
+	useEffect(() => {
+		getProductData()
+	}, []);
+
+
+	// Cart system
+	const [cart, setCart] = useState(cartFromLocalStorage);
+	const onAdd = (product) => {
+		const exist = cart.find((x) => x._id === product._id);
+		if(exist) {
+			setCart(cart.map((x) =>
+			x._id === product._id ? {...exist, qty: exist.qty + 1} : x))
+		} else {
+			setCart([...cart, { ...product, qty: 1}])
+		}
+		// setCart([...cart, product]);
+		// console.log(product)
+	}
+	const onRemove = (product) => {
+		const exist = cart.find((x) => x._id === product._id);
+		if(exist.qty === 1) {
+			setCart(cart.filter((x) => x._id !== product._id));
+		} else {
+			setCart(
+				cart.map((x) =>
+				x._id === product._id ? { ...exist, qty: exist.qty - 1} :x)
+			)
+		}
+        //setCart(cart.filter((productInCart) => productInCart !== product))
+    }
+
+	const clearCart = () => {
+		setCart(cart.length = [])
+	}
+
+	useEffect(() => {
+		localStorage.setItem("cart", JSON.stringify(cart));
+	}, [cart])
+
+	const cartState = useState([]);
+
 
 	return (
 		<>
-		<ShoppingCartContext.Provider value={cartState}>
-			<Routes>
-		<Route path='/' element={ <Main/> } />
-        <Route path="/shop" element={ <Product/> } />
+			<ShoppingCartContext.Provider value={cartState}>
+				<Routes>
+					<Route path='/' element={<Registeruser/>}/>
+					<Route path='/login' element={<Login/>}/>
+					<Route path='/main' element={<Main product={product} onAdd={onAdd} cart={cart} />} />
+					<Route path="/shop" element={<Product product={product} onAdd={onAdd} cart={cart} />} /> 
 
-        <Route path="/productdetails/:id" element={ <ProductDesrip /> } />
-		<Route path="/cart" element={ <Cart /> } />
-		<Route path="checkout" element={ <Checkout/> } />
-
-      </Routes>
-	  </ShoppingCartContext.Provider>
+					 <Route path="/productdetails/:id" element={<ProductDesrip onAdd={onAdd} cart={cart} />} />
+					 <Route path="/cart" element={<Cart onAdd={onAdd} onRemove={onRemove} cart={cart} clearCart={clearCart} />} />
+					 <Route path="/checkout" element={<Checkout cart={cart}/>} /> 
+				</Routes>
+			</ShoppingCartContext.Provider>
 		</>
 	);
 }

@@ -1,4 +1,4 @@
-import { itemsDB } from '../model/items.js'
+import { itemsDB, usersDB } from '../model/items.js'
 import mongoose from "mongoose";
 
 
@@ -59,4 +59,31 @@ const homeView = (req, res) => {
         });
 }
 
-export { create, update, createView, homeView, updateView , viewSingleProduct}
+const registeruser = (req, res) => {
+    console.log(req.body)
+    
+    const user = new usersDB({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        phonenumber: req.body.phonenumber,
+        password: req.body.password
+    })
+    user.save(user).then(data => {
+        res.send(data)
+        //res.redirect('/items');
+    });
+}
+
+const findUser = (req, res) => {
+    console.log('running')
+    console.log(req.params.email);
+    usersDB.findOne({email:req.params.email}).
+        then(userData => {
+            //res.render('index', { userData })
+            res.send(userData)
+        });
+        //console.log(proData)
+}
+
+export { create, update, createView, homeView, updateView , viewSingleProduct, registeruser, findUser}
