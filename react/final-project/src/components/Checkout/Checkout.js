@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from '../Common/Header/Header'
 import Footer from '../Common/Footer/Footer'
 import Discount from '../Common/Discount-Secction/Discount'
@@ -8,6 +8,21 @@ import Orderdetails from './OrderDetails/Orderdetails'
 
 function Checkout(props) {
     const {cart} = props
+    const [user, setUser] = useState({
+        email: "", password: "", checkpassword: "", firstname: "", lastname: "", phonenumber: ""
+    });
+
+    let name, value;
+
+    const handleInputs = (e) => {
+        
+        name = e.target.name;
+        value = e.target.value;
+
+        setUser({ ...user, [name]:value});
+
+    }
+    
     return (
         <div>
 
@@ -19,9 +34,9 @@ function Checkout(props) {
 
                         <Billingaddress/>
 
-                        <Orderdetails/>
+                        <Orderdetails cart={cart}/>
 
-                    </div>
+                    </div>  
                 </div>
             </div>
             <Footer />

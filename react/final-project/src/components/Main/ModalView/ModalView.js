@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function ModalView(props) {
-    const {modalview} = props
-  return (
-    <>
-     <div className="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
+    const { modalview, onAdd, onRemove } = props
+    console.log(`modalview`)
+    return (
+        <>
+            <div className="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
                 <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <button type="button" className="close btn" data-dismiss="modal" aria-label="Close">
@@ -32,35 +34,27 @@ function ModalView(props) {
                                                 </div>
                                                 <h5 className="price">{modalview.price}</h5>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita quibusdam aspernatur, sapiente consectetur accusantium perspiciatis praesentium eligendi, in fugiat?</p>
-                                                <a href="#">View Full Product Details</a>
+                                                <Link to={`/productdetails/${modalview._id}`}>View Full Product Details</Link>
                                             </div>
 
-                                            <form className="cart" method="post">
+                                            <div className="cart" >
                                                 <div className="quantity">
-                                                    <span className="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i className="fa fa-minus" aria-hidden="true"></i></span>
-
-                                                    <input type="number" className="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1" />
-
-                                                    <span className="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i className="fa fa-plus" aria-hidden="true"></i></span>
+                                                    <span className="qty-minus" onClick={() => onAdd(modalview)}><i className="fa fa-plus" aria-hidden="true"></i></span>
+                                                    {modalview.qty}
+                                                    <span className="qty-plus" onClick={() => onRemove(modalview)}><i className="fa fa-minus" aria-hidden="true"></i></span>
                                                 </div>
-                                                <button type="submit" name="addtocart" value="5" className="cart-submit">Add to cart</button>
-
-                                                <div className="modal_pro_wishlist">
-                                                    <a href="wishlist.html" target="_blank"><i className="ti-heart"></i></a>
-                                                </div>
-
-                                                <div className="modal_pro_compare">
-                                                    <a href="compare.html" target="_blank"><i className="ti-stats-up"></i></a>
-                                                </div>
-                                            </form>
+                                                
+                                                <button onClick={() => onAdd(modalview)} className="add-to-cart-btn">ADD TO CART</button>
+                                                
+                                            </div>
 
                                             <div className="share_wf mt-30">
                                                 <p>Share With Friend</p>
                                                 <div className="_icon">
-                                                    <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
+                                                    {/* <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
                                                     <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
                                                     <a href="#"><i className="fa fa-pinterest" aria-hidden="true"></i></a>
-                                                    <a href="#"><i className="fa fa-google-plus" aria-hidden="true"></i></a>
+                                                    <a href="#"><i className="fa fa-google-plus" aria-hidden="true"></i></a> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -71,8 +65,8 @@ function ModalView(props) {
                     </div>
                 </div>
             </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default ModalView

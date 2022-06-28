@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
+import Modalview from '../ModalView/ModalView.js'
 
 function NewArrival(props) {
-    const { product, onAdd } = props
-    const[modalview,getmodalview] = useState()
+    const { product, onAdd, onRemove } = props
+    const[modalview,getmodalview] = useState({})
 
     const viewModal = (data) => {
-        console.log(data)
+        console.log(data.price)
         getmodalview(data)
         
     }
@@ -13,7 +14,7 @@ function NewArrival(props) {
     return (
         <>
            
-
+        <Modalview modalview={modalview} onAdd={onAdd} onRemove={onRemove}/>
 
 
             <section className="new_arrivals_area section_padding_100_0 clearfix">
@@ -44,7 +45,7 @@ function NewArrival(props) {
                         {product && product.map((data, key) => {
                             return (
                                 <>
-                                    <div className="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s">
+                                    <div className="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s" key={key}>
 
                                         <div className="product-img">
                                             <img src={`./img/img/product-img/${data.imagepath}`} alt="" />

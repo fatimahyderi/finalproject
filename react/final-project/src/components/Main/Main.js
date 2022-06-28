@@ -9,14 +9,14 @@ import OfferArea from './Offer Area/OfferArea'
 import Footer from '../Common/Footer/Footer'
 
 function Main(props) {
-  const {product, onAdd, cart} = props
+  const {product, onAdd, cart, onRemove} = props
   return (
     <>
     <Header cart={cart}/>
     <Discount/>
     <Welcome/>
     <TopCategory/>
-    <NewArrival product={product} onAdd={onAdd}/>
+    <NewArrival product={product} onAdd={onAdd} onRemove={onRemove}/>
     <OfferArea/>
     <Testimonials/>
     <Footer/>

@@ -94,7 +94,7 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Registeruser/>}/>
 					<Route path='/login' element={<Login/>}/>
-					<Route path='/main' element={<Main product={product} onAdd={onAdd} cart={cart} />} />
+					<Route path='/main' element={<Main product={product} onAdd={onAdd} cart={cart} onRemove={onRemove} />} />
 					<Route path="/shop" element={<Product product={product} onAdd={onAdd} cart={cart} />} /> 
 
 					 <Route path="/productdetails/:id" element={<ProductDesrip onAdd={onAdd} cart={cart} />} />
