@@ -75,6 +75,24 @@ const registeruser = (req, res) => {
     });
 }
 
+const orderDetails = (req, res) => {
+    console.log(req.body)
+    
+    const order = new ordersDB({
+        totalamount: req.body.totalamount,
+        address: req.body.address,
+        paymentdetails: req.body.paymentdetails,
+        product:req.body.product
+        
+    })
+    order.save(order).then(data => {
+        
+        console.log(data)
+        
+        //res.redirect('/items');
+    });
+}
+
 const findUser = (req, res) => {
     console.log('running')
     console.log(req.params.email);
@@ -86,4 +104,4 @@ const findUser = (req, res) => {
         //console.log(proData)
 }
 
-export { create, update, createView, homeView, updateView , viewSingleProduct, registeruser, findUser}
+export { create, update, createView, homeView, updateView , viewSingleProduct, registeruser, findUser, orderDetails}

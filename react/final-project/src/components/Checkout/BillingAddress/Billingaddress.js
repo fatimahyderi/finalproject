@@ -1,6 +1,46 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-function Billingaddress() {
+function Billingaddress(props) {
+    const {cart} = props
+    const itemPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
+    const shippingPrice = cart.length === 0 || itemPrice > 2000 ? 0 : 150;
+    const grandtotal = itemPrice + shippingPrice
+    const cartproduct_id = []
+    cart.map(item => {
+        cartproduct_id.push(`ObjectId("${item._id}")`)
+    })
+
+    const [user, setUser] = useState({
+        email: "", address: "", firstname: "", lastname: "", phonenumber: ""
+    });
+
+    let name, value;
+
+    const handleInputs = (e) => {
+        
+        name = e.target.name;
+        value = e.target.value;
+
+        setUser({ ...user, [name]:value});
+
+    }
+    
+    const PostData =  (e) => {
+        e.preventDefault()
+        console.log(user)
+        let formdata = new FormData(e.target);
+        const url = "http://localhost:8080/items/order"
+        fetch(url, {
+            method: "POST",
+            body: new URLSearchParams(formdata)
+        }).then(res => res.json()).then(response => {
+            console.log(response);
+            
+        }).catch(function (response) {
+            //handle error
+            console.log(response);
+          });
+        } 
   return (
     <div className="col-12 col-md-6">
                             <div className="checkout_details_area mt-50 clearfix">
@@ -10,15 +50,15 @@ function Billingaddress() {
                                     <p>Enter your cupone code</p>
                                 </div>
 
-                                <form action="#" method="post">
+                                <form onSubmit={PostData}>
                                     <div className="row">
                                         <div className="col-md-6 mb-3">
                                             <label htmlFor="first_name">First Name <span>*</span></label>
-                                            <input type="text" className="form-control" id="first_name" value="" required />
+                                            <input type="text" className="form-control" name='firstname' id="first_name" value={user.firstname} onChange={handleInputs} required />
                                         </div>
                                         <div className="col-md-6 mb-3">
                                             <label htmlFor="last_name">Last Name <span>*</span></label>
-                                            <input type="text" className="form-control" id="last_name" value="" required />
+                                            <input type="text" className="form-control" name='lastname' id="last_name" value={user.lastname} onChange={handleInputs} required />
                                         </div>
                                         {/* <div className="col-12 mb-3">
                                             <label htmlFor="company">Company Name</label>
@@ -39,8 +79,7 @@ function Billingaddress() {
                                         </div> */}
                                         <div className="col-12 mb-3">
                                             <label htmlFor="street_address">Address <span>*</span></label>
-                                            <input type="text" className="form-control mb-3" id="street_address" value="" />
-                                            <input type="text" className="form-control" id="street_address2" value="" />
+                                            <input type="text" className="form-control" name='address' id="street_address2" value={user.address} onChange={handleInputs} />
                                         </div>
                                         {/* <div className="col-12 mb-3">
                                             <label htmlFor="postcode">Postcode <span>*</span></label>
@@ -56,13 +95,15 @@ function Billingaddress() {
                                         </div> */}
                                         <div className="col-12 mb-3">
                                             <label htmlFor="phone_number">Phone No <span>*</span></label>
-                                            <input type="number" className="form-control" id="phone_number" min="0" value="" />
+                                            <input type="number" className="form-control" name='phonenumber' id="phone_number" min="0" value={user.phonenumber} onChange={handleInputs} />
                                         </div>
                                         <div className="col-12 mb-4">
                                             <label htmlFor="email_address">Email Address <span>*</span></label>
-                                            <input type="email" className="form-control" id="email_address" value="" />
+                                            <input type="email" className="form-control" name='email' id="email_address" value={user.email} onChange={handleInputs} />
                                         </div>
-
+                                        <input type="hidden" id="custId" name="totalamount" value={grandtotal}></input>
+                                        <input type="hidden" id="custId" name="product" value={cartproduct_id}></input>
+                                        
                                         {/* <div className="col-12">
                                             <div className="custom-control custom-checkbox d-block mb-2">
                                                 <input type="checkbox" className="custom-control-input" id="customCheck1" />
@@ -77,6 +118,8 @@ function Billingaddress() {
                                                 <label className="custom-control-label" htmlFor="customCheck3">Subscribe to our newsletter</label>
                                             </div>
                                         </div> */}
+                                        {/* <a href="index.html" class="btn karl-checkout-btn">Place Order</a> */}
+                                        <button  className="btn karl-checkout-btn" type='submit'>Place Order</button>
                                     </div>
                                 </form>
                             </div>

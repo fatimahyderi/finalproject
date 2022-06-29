@@ -47,18 +47,21 @@ const orderSchema = new mongoose.Schema({
     totalamount: {
         type: Number
     },
-    product: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "genetech_items",
-        required: true
-    },
+    product: [{
+        
+            type: mongoose.Schema.Types.Mixed,
+            ref: "genetech_items",
+        
+
+    }],
+    
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "genetech_users",
-        required: true
+        
     },
     address: {
-        type: Number
+        type: String
     },
     paymentdetails: {
         type: String
