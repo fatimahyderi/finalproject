@@ -1,23 +1,45 @@
 import mongoose from "mongoose";
 
-
-const itemSchema = new mongoose.Schema({
+//Category Schema & Model
+const categorySchema = new mongoose.Schema({
     name: {
         type: String
-    },
-    color: {
+    } , 
+    cat_description: {
         type: String
-    },
-    brand: {
-        type: String
-    },
-    price: {
-        type: Number
-    },
-    imagepath: {
-        type: String
-    }
+    } 
 });
+
+const CategoryDB = mongoose.model('Categorie', categorySchema);
+// const itemSchema = new mongoose.Schema({
+//     name: {
+//         type: String
+//     },
+//     color: {
+//         type: String
+//     },
+//     brand: {
+//         type: String
+//     },
+//     price: {
+//         type: Number
+//     },
+//     imagepath: {
+//         type: String
+//     }
+// });
+const productsSchema = new mongoose.Schema({
+    name: String,
+    price: Number,
+    image: String,
+    size: String,
+    quantity: Number,
+    category:  {type: mongoose.Schema.Types.String, ref: "Categorie"}
+    //category:  [{type: Schema.Types.ObjectId, ref: "Categorie"}]
+});
+
+// The alternative to the export model pattern is the export schema pattern.
+
 
 const userSchema = new mongoose.Schema({
     firstname: {
@@ -38,7 +60,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // The alternative to the export model pattern is the export schema pattern.
-const itemsDB = mongoose.model('genetech_items', itemSchema);
+// const itemsDB = mongoose.model('genetech_items', itemSchema);
 
 // The alternative to the export model pattern is the export schema pattern.
 const usersDB = mongoose.model('genetech_users', userSchema);
@@ -47,25 +69,20 @@ const orderSchema = new mongoose.Schema({
     totalamount: {
         type: Number
     },
-    product: [{
-        
-            type: mongoose.Schema.Types.Mixed,
-            ref: "genetech_items",
-        
-
-    }],
-    
-    user: {
+    product:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "genetech_users",
-        
+        ref: 'Products'
+    }],
+
+
+    firstname: {
+        type: String
+
     },
     address: {
         type: String
     },
-    paymentdetails: {
-        type: String
-    }
+    
 });
 
 
@@ -74,6 +91,6 @@ const orderSchema = new mongoose.Schema({
 // The alternative to the export model pattern is the export schema pattern.
 const ordersDB = mongoose.model('genetech_orders', orderSchema);
 
+const ProductsDB = mongoose.model('Products', productsSchema);
 
-
-export { itemsDB,  usersDB, ordersDB }
+export { ProductsDB, CategoryDB, usersDB, ordersDB }

@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 import './shop.css';
 
 function Shop(props) {
-    const { product, onAdd } = props
+    const { product, onAdd} = props
     const [pageNumber, setPageNumber] = useState(0);
     const productsperpage = 4;
     const pagesVisited = pageNumber * productsperpage
@@ -16,7 +16,7 @@ function Shop(props) {
                 <div className="product-img">
 
 
-                    <img src={`./img/img/product-img/${data.imagepath}`} alt="" />
+                    <img src={`./img/img/product-img/${data.image}`} alt="" />
                     <div className="product-quicview">
                         <Link to={`/productdetails/${data._id}`} ><i className="ti-plus"></i></Link>
                     </div>

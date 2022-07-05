@@ -1,26 +1,36 @@
 import express from 'express'
-import { create, update, createView, homeView, updateView , viewSingleProduct, registeruser, findUser, orderDetails } from '../controller/controller.js'
+import { homeView, viewSingleProduct, deleteproduct, productupdate, registeruser, findUser, orderDetails, orderData, getCategory, saveProductData, saveCategory, productView, update } from '../controller/controller.js'
 const router = express.Router();
 
 //Home route
-router.get('/', homeView);
+ router.get('/', homeView);
 
-// Add view route
-router.get('/add', createView);
+// // Add view route
+// router.get('/add', createView);
 
-// Update view route
-router.get('/update/:id', updateView);
-router.get('/product/:id' , viewSingleProduct);
+// // Update view route
+// router.get('/update/:id', updateView);
+ router.get('/product/:id' , viewSingleProduct);
 
 
 /*================== Route API For Crud Opr  ========================*/
-router.post('/add', create);
-router.put('/update/:id', update);
+// router.post('/add', create);
+ router.put('/updateproduct/:id', productupdate);
 
 //Add User 
 router.post('/registeruser', registeruser)
 
 router.post('/order', orderDetails)
+router.get('/orderdata/:id',orderData)
+
+
+// route for fetching CategoryData from mongoDB
+router.post('/category', saveCategory);
+router.get('/categoryFormData', getCategory);
+router.post('/products', saveProductData);
+router.get('/viewproducts', productView);
+router.get('/view/:id', update)
+router.get('/deleteproduct/:id', deleteproduct)
 
 // Get Login User Data
 router.get('/users/:email', findUser)

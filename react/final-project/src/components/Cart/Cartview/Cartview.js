@@ -19,7 +19,7 @@ function Cartview(props) {
                             <>
                                 <tr key={item.id}>
                                     <td className="cart_product_img d-flex align-items-center">
-                                        <a href="index.html"><img src={process.env.PUBLIC_URL + `/img/img/product-img/${item.imagepath}`} alt="Product" /></a>
+                                        <a href="index.html"><img src={process.env.PUBLIC_URL + `/img/img/product-img/${item.image}`} alt="Product" /></a>
                                         <h6>{item.name}</h6>
                                     </td>
                                     <td className="price"><span>{item.price}</span></td>

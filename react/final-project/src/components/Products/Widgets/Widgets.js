@@ -1,75 +1,61 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
-function Widgets() {
-  return (
-    <div className="col-12 col-md-4 col-lg-3">
-                            <div className="shop_sidebar_area">
+function Widgets(props) {
+    const { product, filterproductsclick } = props
+    const [category, setCategory] = useState();
 
-                                <div className="widget catagory mb-50">
+    //useffect runs once when event occurs
+    useEffect(() => {
 
-                                    <div className="nav-side-menu">
-                                        <h6 className="mb-0">Catagories</h6>
-                                        <div className="menu-list">
-                                            <ul id="menu-content2" className="menu-content collapse out">
+        // Fetching Categories through an API
+        const getCategoryData = () => {
+            axios.get('http://localhost:8080/items/categoryFormData')
+                .then(function (response) {
+                    setCategory(response.data);
+                    //console.log(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .then(function () {
+                    //always run
+                });
+        }
 
-                                                <li data-toggle="collapse" data-target="index.htmlwomen2">
-                                                    <a href="index.html">Woman wear</a>
-                                                    <ul className="sub-menu collapse show" id="women2">
-                                                        <li><a href="index.html">Midi Dresses</a></li>
-                                                        <li><a href="index.html">Maxi Dresses</a></li>
-                                                        <li><a href="index.html">Prom Dresses</a></li>
-                                                        <li><a href="index.html">Little Black Dresses</a></li>
-                                                        <li><a href="index.html">Mini Dresses</a></li>
-                                                    </ul>
-                                                </li>
+        getCategoryData();
+    }, []);
 
-                                                <li data-toggle="collapse" data-target="index.htmlman2" className="collapsed">
-                                                    <a href="index.html">Man Wear</a>
-                                                    <ul className="sub-menu collapse" id="man2">
-                                                        <li><a href="index.html">Man Dresses</a></li>
-                                                        <li><a href="index.html">Man Black Dresses</a></li>
-                                                        <li><a href="index.html">Man Mini Dresses</a></li>
-                                                    </ul>
-                                                </li>
 
-                                                <li data-toggle="collapse" data-target="index.htmlkids2" className="collapsed">
-                                                    <a href="index.html">Children</a>
-                                                    <ul className="sub-menu collapse" id="kids2">
-                                                        <li><a href="index.html">Children Dresses</a></li>
-                                                        <li><a href="index.html">Mini Dresses</a></li>
-                                                    </ul>
-                                                </li>
 
-                                                <li data-toggle="collapse" data-target="index.htmlbags2" className="collapsed">
-                                                    <a href="index.html">Bags &amp; Purses</a>
-                                                    <ul className="sub-menu collapse" id="bags2">
-                                                        <li><a href="index.html">Bags</a></li>
-                                                        <li><a href="index.html">Purses</a></li>
-                                                    </ul>
-                                                </li>
+    return (
+        <div className="col-12 col-md-4 col-lg-3">
+            <div className="shop_sidebar_area">
 
-                                                <li data-toggle="collapse" data-target="index.htmleyewear2" className="collapsed">
-                                                    <a href="index.html">Eyewear</a>
-                                                    <ul className="sub-menu collapse" id="eyewear2">
-                                                        <li><a href="index.html">Eyewear Style 1</a></li>
-                                                        <li><a href="index.html">Eyewear Style 2</a></li>
-                                                        <li><a href="index.html">Eyewear Style 3</a></li>
-                                                    </ul>
-                                                </li>
+                <div className="widget catagory mb-50">
 
-                                                <li data-toggle="collapse" data-target="index.htmlfootwear2" className="collapsed">
-                                                    <a href="index.html">Footwear</a>
-                                                    <ul className="sub-menu collapse" id="footwear2">
-                                                        <li><a href="index.html">Footwear 1</a></li>
-                                                        <li><a href="index.html">Footwear 2</a></li>
-                                                        <li><a href="index.html">Footwear 3</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div className="nav-side-menu">
+                        <h6 className="mb-0">Catagories</h6>
+                        <div className="menu-list">
+                            <ul id="menu-content2" className="menu-content collapse out">
+                                {category && category.map((data, key) => {
+                                    return (
+                                        <>
+                                            <li value={data.name} onClick={() => filterproductsclick(data.name)}>{data.name}</li>
+                                        </>
+                                    )
+                                })}
+                                {/* <li onClick={() => filterproductsclick('kids')}>
+                                    Kids wear
 
+                                </li> */}
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {/* 
                                 <div className="widget price mb-50">
                                     <h6 className="widget-title mb-30">Filter by Price</h6>
                                     <div className="widget-desc">
@@ -110,9 +96,9 @@ function Widgets() {
                                             <li><a href="index.html">XXL</a></li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> */}
 
-                                <div className="widget recommended">
+                {/* <div className="widget recommended">
                                     <h6 className="widget-title mb-30">Recommended</h6>
 
                                     <div className="widget-desc">
@@ -147,10 +133,10 @@ function Widgets() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-  )
+                                </div> */}
+            </div>
+        </div>
+    )
 }
 
 export default Widgets

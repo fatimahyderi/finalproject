@@ -7,7 +7,8 @@ import Orderdetails from './OrderDetails/Orderdetails'
 
 
 function Checkout(props) {
-    const {cart} = props
+    const {cart,verifiedLoginuser, clearCart} = props
+    console.log(`user${verifiedLoginuser}`)
         
     
     return (
@@ -19,7 +20,8 @@ function Checkout(props) {
                 <div className="container">
                     <div className="row">
 
-                        <Billingaddress cart={cart}/>
+
+                        <Billingaddress cart={cart} clearCart={clearCart} />
 
                         <Orderdetails cart={cart}/>
 

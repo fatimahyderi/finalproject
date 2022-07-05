@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function ModalView(props) {
     const { modalview, onAdd, onRemove } = props
-    console.log(`modalview`)
+    console.log(modalview)
     return (
         <>
             <div className="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
@@ -19,7 +19,7 @@ function ModalView(props) {
                                     <div className="row">
                                         <div className="col-12 col-lg-5">
                                             <div className="quickview_pro_img">
-                                                <img src={`./img/img/product-img/${modalview.imagepath}`} alt="" />
+                                                <img src={`./img/img/product-img/${modalview.image}`} alt="" />
                                             </div>
                                         </div>
                                         <div className="col-12 col-lg-7">
@@ -40,11 +40,11 @@ function ModalView(props) {
                                             <div className="cart" >
                                                 <div className="quantity">
                                                     <span className="qty-minus" onClick={() => onAdd(modalview)}><i className="fa fa-plus" aria-hidden="true"></i></span>
-                                                    {modalview.qty}
+                                                    
                                                     <span className="qty-plus" onClick={() => onRemove(modalview)}><i className="fa fa-minus" aria-hidden="true"></i></span>
                                                 </div>
                                                 
-                                                <button onClick={() => onAdd(modalview)} className="add-to-cart-btn">ADD TO CART</button>
+                                                <Link to='/main'><button onClick={() => onAdd(modalview)} className="add-to-cart-btn">ADD TO CART</button></Link>
                                                 
                                             </div>
 

@@ -48,15 +48,16 @@ function NewArrival(props) {
                                     <div className="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s" key={key}>
 
                                         <div className="product-img">
-                                            <img src={`./img/img/product-img/${data.imagepath}`} alt="" />
+                                            <img src={`./img/img/product-img/${data.image}`} alt="" />
                                             <div className="product-quicview">
                                                 <button onClick={() => viewModal(data)} data-toggle="modal" data-target="#quickview"><i className="ti-plus"></i></button>
                                             </div>
                                         </div>
 
                                         <div className="product-description">
-                                            <h4 className="product-price">{data.price}</h4>
-                                            <p>{data.name}</p>
+                                            <h4 className="product-price">{data.name}</h4>
+                                            <p>{data.price}</p>
+                                            <p>{data.category}</p>
 
                                             <button onClick={() => onAdd(data)} className="add-to-cart-btn">ADD TO CART</button>
                                         </div>

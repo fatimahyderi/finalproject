@@ -23,12 +23,19 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 import Registeruser from "./components/Registeruser/Registeruser";
 import Login from "./components/Login/Login";
+import { useNavigate } from "react-router-dom";
+import Order from "./components/OrderPage/Order";
+import Admin from "./components/AdminPanel/Admin";
+import ProductForm from "./components/ProductForms/ProductForm";
+import SingleProductTable from "./components/ProductForms/SingleProductTable";
+import CategoryForm from "./components/ProductForms/CategoryForm";
+import EditProductForm from "./components/ProductForms/EditProductForm";
 
 export const ShoppingCartContext = React.createContext();
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
 function App() {
-
+	const nav = useNavigate();
 	// Getting products from database
 	const [product, getProduct] = useState([]);
 	const getProductData = () => {
@@ -87,19 +94,101 @@ function App() {
 
 	const cartState = useState([]);
 
+	const [verifiedLoginUser, setVerifiedLoginUser] = useState()
+	const [loginUser, setLoginUser] = useState({
+        email: "", password: "" 
+    });
+
+    let name, value;
+
+    const handleInputs = (e) => {
+        
+        name = e.target.name;
+        value = e.target.value;
+
+        setLoginUser({ ...loginUser, [name]:value});
+
+    }
+
+	const LoginData =  (e) => {
+        e.preventDefault()
+        console.log(loginUser)
+        
+            const userEmail = loginUser.email
+            axios.get(`http://localhost:8080/items/users/${userEmail}`)
+                .then(function (response) {
+					if(loginUser.email === 'admin12345@gmail.com'){
+						if(loginUser.password === response.data.password){
+							nav("/secretpanel/admin")
+						}
+						else{
+							alert("Admin Password is not correct")
+						}
+					}else{
+						if(loginUser.password === response.data.password){
+						
+							nav("/main")
+							
+						}else{
+							alert('Password not correct')
+						}
+
+					}
+                    console.log(response.data.password)
+                    // handle success
+                    
+                    
+                }).catch(function (error) {
+                    // handle error
+                    alert("email not found");
+                })
+        
+        // let formdata = new FormData(e.target);
+        // const url = "http://localhost:8080/items/registeruser"
+        // fetch(url, {
+        //     method: "POST",
+        //     body: new URLSearchParams(formdata)
+        // }).then(res => res.json()).then(response => {
+        //     console.log(response);
+        // }).catch(function (response) {
+        //     //handle error
+        //     console.log(response);
+        //   });
+
+        
+        
+        
+        
+         
+        // if(data.status === 422 || !data) {
+        //     window.alert("invalid Registration");
+        //     console.log("invalid registration")
+        // } else {
+        //     window.alert("Registration succesful");
+        //     console.log("Registration successful");
+
+            
+        // }
+    }
 
 	return (
 		<>
 			<ShoppingCartContext.Provider value={cartState}>
 				<Routes>
 					<Route path='/' element={<Registeruser/>}/>
-					<Route path='/login' element={<Login/>}/>
+					<Route path='/login' element={<Login loginUser={loginUser} handleInputs={handleInputs} LoginData={LoginData} />}/>
 					<Route path='/main' element={<Main product={product} onAdd={onAdd} cart={cart} onRemove={onRemove} />} />
 					<Route path="/shop" element={<Product product={product} onAdd={onAdd} cart={cart} />} /> 
 
 					 <Route path="/productdetails/:id" element={<ProductDesrip onAdd={onAdd} cart={cart} />} />
 					 <Route path="/cart" element={<Cart onAdd={onAdd} onRemove={onRemove} cart={cart} clearCart={clearCart} />} />
-					 <Route path="/checkout" element={<Checkout cart={cart}/>} /> 
+					 <Route path="/checkout" element={<Checkout cart={cart} clearCart={clearCart} />} />
+					 <Route path="/order/:id" element={<Order/>} /> 
+					 <Route path="/secretpanel/admin" element={<Admin/>} />
+					 <Route path="/secretpanel/product-form" element={<ProductForm/>} />
+					 <Route exact path="/secretpanel/view/:id"  element= {<SingleProductTable />} />
+        			<Route exact path="/secretpanel/edit/:id"  element= {<EditProductForm />} />
+        			<Route path="/secretpanel/category-form"  element= {<CategoryForm />} />
 				</Routes>
 			</ShoppingCartContext.Provider>
 		</>

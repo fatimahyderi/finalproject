@@ -1,14 +1,18 @@
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Billingaddress(props) {
-    const {cart} = props
+    const nav = useNavigate();
+    const {cart,clearCart} = props
     const itemPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
     const shippingPrice = cart.length === 0 || itemPrice > 2000 ? 0 : 150;
     const grandtotal = itemPrice + shippingPrice
-    const cartproduct_id = []
-    cart.map(item => {
-        cartproduct_id.push(`ObjectId("${item._id}")`)
+    const cartproduct_id2 = []
+    cart.map((item) => {
+        cartproduct_id2.push(item._id)
     })
+    const cartproduct_id = cartproduct_id2
 
     const [user, setUser] = useState({
         email: "", address: "", firstname: "", lastname: "", phonenumber: ""
@@ -34,8 +38,10 @@ function Billingaddress(props) {
             method: "POST",
             body: new URLSearchParams(formdata)
         }).then(res => res.json()).then(response => {
-            console.log(response);
-            
+            console.log(response._id)
+            const orderid = response._id
+            clearCart()
+            nav(`/order/${orderid}`)
         }).catch(function (response) {
             //handle error
             console.log(response);
@@ -79,7 +85,7 @@ function Billingaddress(props) {
                                         </div> */}
                                         <div className="col-12 mb-3">
                                             <label htmlFor="street_address">Address <span>*</span></label>
-                                            <input type="text" className="form-control" name='address' id="street_address2" value={user.address} onChange={handleInputs} />
+                                            <input type="text" className="form-control" name='address' id="street_address2" value={user.address} onChange={handleInputs} required />
                                         </div>
                                         {/* <div className="col-12 mb-3">
                                             <label htmlFor="postcode">Postcode <span>*</span></label>
@@ -95,11 +101,11 @@ function Billingaddress(props) {
                                         </div> */}
                                         <div className="col-12 mb-3">
                                             <label htmlFor="phone_number">Phone No <span>*</span></label>
-                                            <input type="number" className="form-control" name='phonenumber' id="phone_number" min="0" value={user.phonenumber} onChange={handleInputs} />
+                                            <input type="number" className="form-control" name='phonenumber' id="phone_number" min="0" value={user.phonenumber} onChange={handleInputs} required/>
                                         </div>
                                         <div className="col-12 mb-4">
                                             <label htmlFor="email_address">Email Address <span>*</span></label>
-                                            <input type="email" className="form-control" name='email' id="email_address" value={user.email} onChange={handleInputs} />
+                                            <input type="email" className="form-control" name='email' id="email_address" value={user.email} onChange={handleInputs} required/>
                                         </div>
                                         <input type="hidden" id="custId" name="totalamount" value={grandtotal}></input>
                                         <input type="hidden" id="custId" name="product" value={cartproduct_id}></input>

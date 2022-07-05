@@ -14,6 +14,16 @@ import { ShoppingCartContext } from '../../App';
 
 function Product(props) {
     const { product, onAdd, cart } = props
+    const [filterproducts,setFilterProducts] = useState()
+    const filterproductsclick = (cat_name) => {
+        const newproducts = product.filter((cat) => {
+            return cat.category === cat_name;
+            
+        })
+        setFilterProducts(newproducts)
+        console.log('done')
+    }
+    console.log(`filter products ${filterproducts}`)
     // const [product, getProduct] = useState();
 
     // const getProductData = () => {
@@ -57,7 +67,7 @@ function Product(props) {
             <section className="shop_grid_area section_padding_100">
                 <div className="container">
                     <div className="row">
-                        <Widgets />
+                        <Widgets product={product} filterproductsclick={filterproductsclick}/>
 
                         <Shop product={product} onAdd={onAdd} />
                     </div>
