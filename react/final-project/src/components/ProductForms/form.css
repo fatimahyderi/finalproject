@@ -13,13 +13,13 @@ body {
   height: 100%;
 } */
 
-@font-face {font-family: "Eina03-Regular"; src: url("//db.onlinewebfonts.com/t/221e88a3e872fdb19cdf5d76e2c26055.eot"); 
+/* @font-face {font-family: "Eina03-Regular"; src: url("//db.onlinewebfonts.com/t/221e88a3e872fdb19cdf5d76e2c26055.eot"); 
     src: url("//db.onlinewebfonts.com/t/221e88a3e872fdb19cdf5d76e2c26055.eot?#iefix") format("embedded-opentype"),
      url("//db.onlinewebfonts.com/t/221e88a3e872fdb19cdf5d76e2c26055.woff2") format("woff2"), 
      url("//db.onlinewebfonts.com/t/221e88a3e872fdb19cdf5d76e2c26055.woff") format("woff"), url("//db.onlinewebfonts.com/t/221e88a3e872fdb19cdf5d76e2c26055.ttf") 
     format("truetype"), url("//db.onlinewebfonts.com/t/221e88a3e872fdb19cdf5d76e2c26055.svg#Eina03-Regular") format("svg"); }
   
-    
+     /* */
     /* .row {
       width: 100%;
         background-color: white;
@@ -33,13 +33,13 @@ body {
         padding: 10px;
     }	 */
     
-    ul li{
+    /* ul li{
       list-style-type: none;
     }
     
     a{
       text-decoration: none;
-    }
+    } */
     
      /* .logo{
       margin-right: 120px;
@@ -50,7 +50,7 @@ body {
       background-repeat: no-repeat;
       background-size: cover;
     }
-     */
+     */ */
     /******************************** header-navigation starts *********************************/
     
   /*   
@@ -79,15 +79,15 @@ body {
   padding: 40px 0;  
   } */
   
-  h2 {
+   .form > h2 {
     text-align: center;
     margin: 40px auto;
     font-size: 28px;
     font-weight: bold;
     letter-spacing: 14.8372px;
   }
-  
-  .container1{ 
+   
+   .container1{ 
     max-width: 460px;
     margin: 40px auto  75px;
     padding: 40px 0;
@@ -95,7 +95,7 @@ body {
     background-color: rgb(158, 206, 206);
     }
   
-    .container1 form{
+    .container1 .productform{
       width: 460px;
       display: flex;
       justify-content: flex-start;
@@ -103,19 +103,19 @@ body {
   
     }
   
-   .container1 form .input-box {
+   .container1 .productform .input-box {
       margin-bottom: 10px;
       width: 200px;
    
     }
   
-    .input-box label{
+    .productform > .input-box > label{
       font-size:12px;
       font-weight: bold; 
       color: grey;
     }
   
-  .container1 form .input-box input{
+  .container1 > .productform > .input-box > input{
       width: 100%;
       height: 45px;
       outline: none;
@@ -129,9 +129,9 @@ body {
       display:flex;
       justify-content: center;
       flex-wrap: wrap; 
-    } 
+    }  
     
-     form input[type='text'] , form input[type='number']{
+      .productform > input[type='text'] , .productform > input[type='number']{
       font-size: 1.1em;
       line-height: 1.4;
       padding: 2px;
@@ -143,14 +143,14 @@ body {
       outline:none;
       background: transparent;
       font-weight: bold;
-    }
+    } 
     
     .myBtn{
     width: 440px;
      
     }
   
-    .container1 form .myBtn input[type='submit'] {    
+    .container1 > form > .myBtn >  input[type='submit'] {    
       width: 94%;
       background:#3f3f4a;
       padding:10px 0;
@@ -169,7 +169,7 @@ body {
     margin: 0 auto;
   }
   
-    table, th,td{
+    .tablestyle > table, th,td{
       border :0.2px solid black;
     }
   
@@ -180,7 +180,7 @@ body {
       font-size:12px;
       font-weight: bold; 
       color: white;
-      margin: 10px;  
+      margin: 10px;   
     }
   
     

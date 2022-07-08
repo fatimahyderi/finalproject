@@ -1,5 +1,5 @@
 import express from 'express'
-import { homeView, viewSingleProduct, deleteproduct, productupdate, registeruser, findUser, orderDetails, orderData, getCategory, saveProductData, saveCategory, productView, update } from '../controller/controller.js'
+import { homeView, order, usersdata, viewSingleProduct, categories, deleteproduct, productupdate, registeruser, findUser, orderDetails, orderData, getCategory, saveProductData, saveCategory, productView, update } from '../controller/controller.js'
 const router = express.Router();
 
 //Home route
@@ -19,7 +19,9 @@ const router = express.Router();
 
 //Add User 
 router.post('/registeruser', registeruser)
-
+router.get('/orderdata', order);
+router.get('/users', usersdata);
+router.get('/category', categories);
 router.post('/order', orderDetails)
 router.get('/orderdata/:id',orderData)
 

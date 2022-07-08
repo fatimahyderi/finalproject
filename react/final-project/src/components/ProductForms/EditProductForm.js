@@ -49,31 +49,7 @@ function handleInputChange(event) {
     )
 }
 
-// function handleSubmit(event) {
-//     event.preventDefault()
-//     // submitToApi(formData)
 
-//     let formData = new FormData(event.target);
-//     //const {p_name, p_price, p_category, p_image, p_quantity} = formData;
-
-//     // Posting Product Form data To MongoDB
-//      // Posting ProductForm data To MongoDB
-//      const apiUrl = `http://localhost:8080/items/updateproduct/${id}`;
-
-//      fetch(apiUrl, {
-//          method: 'POST',
-//          //headers: { "content-type": "application/json"},
-//          //body: JSON.stringify({ p_name, p_price, p_category, p_image, p_quantity })
-//          body: new URLSearchParams(formData)
-//      }).then(res => res.json())
-//      nav('/secretpanel/product-form')
-//          .then(response => {
-//             console.log(response)
-            
-//          })
-//  }
- //     console.log(formData)
- // }
 
  async function handleSubmit(e) {
     e.preventDefault()
@@ -166,7 +142,7 @@ useEffect(() =>{
   <div class= "myWrapper"> 
 
     <div class="container1">
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit} className="productform">
         <div class="col1">
           <div class="item-details" id="col-2">
             <div class="input-box">

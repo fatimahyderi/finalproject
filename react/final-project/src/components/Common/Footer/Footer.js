@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -22,11 +23,11 @@ function Footer() {
                     <div className="col-12 col-sm-6 col-md-3 col-lg-2">
                         <div className="single_footer_area">
                             <ul className="footer_widget_menu">
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="Blog.html">Blog</a></li>
-                                <li><a href="index.html">Faq</a></li>
-                                <li><a href="index.html">Returns</a></li>
-                                <li><a href="index.html">Contact</a></li>
+                                <li><Link to="/main">About</Link></li>
+                                <li><Link to="/main">Blog</Link></li>
+                                <li><Link to="/main">Faq</Link></li>
+                                <li><Link to="/main">Returns</Link></li>
+                                <li><Link to="/main">Contact</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -34,10 +35,10 @@ function Footer() {
                     <div className="col-12 col-sm-6 col-md-3 col-lg-2">
                         <div className="single_footer_area">
                             <ul className="footer_widget_menu">
-                                <li><a href="index.html">My Account</a></li>
-                                <li><a href="index.html">Shipping</a></li>
-                                <li><a href="index.html">Our Policies</a></li>
-                                <li><a href="index.html">Afiliates</a></li>
+                                <li><Link to="/main">My Account</Link></li>
+                                <li><Link to="/main">Shipping</Link></li>
+                                <li><Link to="/main">Our Policies</Link></li>
+                                <li><Link to="/main">Afiliates</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -48,9 +49,9 @@ function Footer() {
                                 <h6>Subscribe to our newsletter</h6>
                             </div>
                             <div className="subscribtion_form">
-                                <form action="index.html" method="post">
+                                <form>
                                     <input type="email" name="mail" className="mail" placeholder="Your email here" />
-                                    <button type="submit" className="submit">Subscribe</button>
+                                    <button className="submit">Subscribe</button>
                                 </form>
                             </div>
                         </div>
@@ -63,10 +64,10 @@ function Footer() {
                     <div className="row">
                         <div className="col-12">
                             <div className="footer_social_area text-center">
-                                <a href="index.html">hell<i className="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="index.html">hell<i className="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="index.html">hell<i className="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="index.html">hell<i className="fa fa-linkedin" aria-hidden="true"></i></a>
+                                <Link to="/main"><i className="fa fa-pinterest" aria-hidden="true"></i></Link>
+                                <Link to="/main"><i className="fa fa-facebook" aria-hidden="true"></i></Link>
+                                <Link to="/main"><i className="fa fa-twitter" aria-hidden="true"></i></Link>
+                                <Link to="/main"><i className="fa fa-linkedin" aria-hidden="true"></i></Link>
                             </div>
                         </div>
                     </div>

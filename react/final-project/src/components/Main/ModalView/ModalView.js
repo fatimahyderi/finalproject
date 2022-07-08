@@ -32,29 +32,31 @@ function ModalView(props) {
                                                     <i className="fa fa-star" aria-hidden="true"></i>
                                                     <i className="fa fa-star" aria-hidden="true"></i>
                                                 </div>
-                                                <h5 className="price">{modalview.price}</h5>
+                                                <h5 className="price">Rs. {modalview.price}</h5>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita quibusdam aspernatur, sapiente consectetur accusantium perspiciatis praesentium eligendi, in fugiat?</p>
-                                                <Link to={`/productdetails/${modalview._id}`}>View Full Product Details</Link>
+                                                {/* <Link to={`/productdetails/${modalview._id}`}>View Full Product Details</Link> */}
                                             </div>
 
                                             <div className="cart" >
-                                                <div className="quantity">
-                                                    <span className="qty-minus" onClick={() => onAdd(modalview)}><i className="fa fa-plus" aria-hidden="true"></i></span>
-                                                    
-                                                    <span className="qty-plus" onClick={() => onRemove(modalview)}><i className="fa fa-minus" aria-hidden="true"></i></span>
+                                               
+
+                                                <Link to='/main'><button onClick={() => onAdd(modalview)} className="cart-submit">ADD TO CART</button></Link>
+                                                <div className="modal_pro_wishlist">
+                                                    <Link to="#"><i className="ti-heart"></i></Link>
                                                 </div>
-                                                
-                                                <Link to='/main'><button onClick={() => onAdd(modalview)} className="add-to-cart-btn">ADD TO CART</button></Link>
-                                                
+
+                                                <div className="modal_pro_compare">
+                                                    <Link to="#" ><i className="ti-stats-up"></i></Link>
+                                                </div>
                                             </div>
 
                                             <div className="share_wf mt-30">
                                                 <p>Share With Friend</p>
                                                 <div className="_icon">
-                                                    {/* <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
-                                                    <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
-                                                    <a href="#"><i className="fa fa-pinterest" aria-hidden="true"></i></a>
-                                                    <a href="#"><i className="fa fa-google-plus" aria-hidden="true"></i></a> */}
+                                                    <Link to="/main"><i className="fa fa-facebook" aria-hidden="true"></i></Link>
+                                                    <Link to="/main"><i className="fa fa-twitter" aria-hidden="true"></i></Link>
+                                                    <Link to="/main"><i className="fa fa-pinterest" aria-hidden="true"></i></Link>
+                                                    <Link to="/main"><i className="fa fa-google-plus" aria-hidden="true"></i></Link>
                                                 </div>
                                             </div>
                                         </div>

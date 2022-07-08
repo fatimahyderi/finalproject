@@ -96,33 +96,36 @@ function Login(props) {
 
   return (
     <div>
+        <div className='login_logo'>
+        <Link to="/"><img src="./img/img/core-img/logo.png" alt="" /></Link>
+        </div>
             <div className="form_wrapper">
-                <div className="form_container">
-                <div className="title_container">
-                        <h2> Login Form</h2>
+                <div className="">
+                <div className="">
+                        <h4> Login Form</h4>
                     </div>  
-                    <div className="row clearfix">
+                    <div className="">
                         <div className="">
-                            <form onSubmit={LoginData}>
-                                <div className='register'>
+                            <form onSubmit={LoginData} className='loginform'>
+                                <div className=''>
                                 <label htmlFor="email">Enter your Email:
-                                    <div className="input_field"> <span><i aria-hidden="true" className="fa fa-envelope"></i></span>
+                                    <div className=""> <span><i aria-hidden="true" className="fa fa-envelope"></i></span>
                                         <input type="email" name="email" placeholder="Email" value={loginUser.email} onChange={handleInputs} required />
                                     </div>
                                 </label>
                                 </div>
 
-                                <div className='register'>
+                                <div className=''>
                                 <label htmlFor="password">Enter password:
-                                    <div className="input_field"> <span><i aria-hidden="true" className="fa fa-lock"></i></span>
+                                    <div className=""> <span><i aria-hidden="true" className="fa fa-lock"></i></span>
                                         <input type="password" name="password" placeholder="Password" value={loginUser.password} onChange={handleInputs} required />
                                     </div>
                                 </label>
                                 </div>
 
 
-                                <div className='register'>
-                                <Link to='/register' className='loginregister'><button className="button" type='submit'> Register </button></Link><button className="button" type='submit'> Login </button> 
+                                <div className=''>
+                                <Link to='/register' className='loginregister'><button className="button" type='submit'> Register </button></Link> <button className="button" type='submit'> Login </button> 
 
                                 </div>
                             </form>

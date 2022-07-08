@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Header from '../Common/Header/Header'
 import Footer from '../Common/Footer/Footer'
 import Discount from '../Common/Discount-Secction/Discount'
@@ -7,8 +7,7 @@ import Orderdetails from './OrderDetails/Orderdetails'
 
 
 function Checkout(props) {
-    const {cart,verifiedLoginuser, clearCart} = props
-    console.log(`user${verifiedLoginuser}`)
+    const {cart, clearCart} = props
         
     
     return (

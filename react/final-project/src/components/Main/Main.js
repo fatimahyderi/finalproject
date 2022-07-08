@@ -9,20 +9,21 @@ import OfferArea from './Offer Area/OfferArea'
 import Footer from '../Common/Footer/Footer'
 
 function Main(props) {
-  const {product, onAdd, cart, onRemove} = props
+  const { product, onAdd, cart, onRemove, user } = props
+  console.log(user)
   return (
     <>
-    <Header cart={cart}/>
-    <Discount/>
-    <Welcome/>
-    <TopCategory/>
-    <NewArrival product={product} onAdd={onAdd} onRemove={onRemove}/>
-    <OfferArea/>
-    <Testimonials/>
-    <Footer/>
+      <Header cart={cart} />
+      <Discount />
+      <Welcome />
+      <TopCategory />
+      <NewArrival product={product} onAdd={onAdd} onRemove={onRemove} cart={cart} />
+      <OfferArea />
+      {/* <Testimonials/> */}
+      <Footer />
 
     </>
-    
+
   )
 }
 

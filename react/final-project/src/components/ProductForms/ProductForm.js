@@ -92,12 +92,12 @@ useEffect(() =>{
 
   return (
   <>
-    <h2>ADD PRODUCTS</h2>
+    <h2 className="form">ADD PRODUCTS</h2>
 
   <div className= "myWrapper"> 
 
     <div className="container1">
-      <form onSubmit={handleSubmit} method= "POST">
+      <form onSubmit={handleSubmit} method= "POST" className="productform">
         <div className="col1">
           <div className="item-details" id="col-2">
             <div className="input-box">

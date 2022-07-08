@@ -83,20 +83,52 @@ const homeView = (req, res) => {
         });
 }
 
+const order = (req, res) => {
+    ordersDB.find().
+        then(userData => {
+            //res.render('index', { userData })
+            res.send(userData)
+        });
+}
+
+const usersdata = (req, res) => {
+    usersDB.find().
+        then(userData => {
+            //res.render('index', { userData })
+            res.send(userData)
+        });
+}
+
+const categories = (req, res) => {
+    CategoryDB.find().
+        then(userData => {
+            //res.render('index', { userData })
+            res.send(userData)
+        });
+}
+
 const registeruser = (req, res) => {
-    console.log(req.body)
-    
-    const user = new usersDB({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        phonenumber: req.body.phonenumber,
-        password: req.body.password
+    console.log(req.body.email)
+    usersDB.findOne({email:req.body.email}, function(err, user) 
+    {
+       if (user) {
+        console.log('already registered')
+        res.send("email already registered")
+       } else {
+        const reguser = new usersDB({
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.email,
+            phonenumber: req.body.phonenumber,
+            password: req.body.password
+        })
+        reguser.save(reguser).then(data => {
+            res.send(data)
+            //res.redirect('/items');
+        });
+       } 
     })
-    user.save(user).then(data => {
-        res.send(data)
-        //res.redirect('/items');
-    });
+    
 }
 
 const deleteproduct = (req, res) => {
@@ -210,4 +242,4 @@ const productView = (req, res) => {
 }
 
 
-export {  homeView, viewSingleProduct, deleteproduct, productupdate, update, registeruser, findUser, orderDetails, orderData, getCategory, saveProductData, saveCategory, productView}
+export {  homeView, order, categories, usersdata, viewSingleProduct, deleteproduct, productupdate, update, registeruser, findUser, orderDetails, orderData, getCategory, saveProductData, saveCategory, productView}

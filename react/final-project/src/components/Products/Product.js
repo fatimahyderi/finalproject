@@ -1,24 +1,17 @@
-import React, { useContext } from 'react'
-import axios from 'axios';
-import react, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useState } from 'react'
 import Header from '../Common/Header/Header';
 import Discount from '../Common/Discount-Secction/Discount';
 import Footer from '../Common/Footer/Footer';
-import ModalView from './ModalView/ModalView';
 import Widgets from './Widgets/Widgets';
 import Shop from './Shop/Shop';
 
-import { ShoppingCartContext } from '../../App';
-
 function Product(props) {
-    const { product, onAdd, cart } = props
-    const [filterproducts,setFilterProducts] = useState()
+    const { product, onAdd, cart, onRemove } = props
+    const [filterproducts, setFilterProducts] = useState()
     const filterproductsclick = (cat_name) => {
         const newproducts = product.filter((cat) => {
             return cat.category === cat_name;
-            
+
         })
         setFilterProducts(newproducts)
         console.log('done')
@@ -60,16 +53,15 @@ function Product(props) {
 
     return (
         <>
-            <Header cart={cart}/>
+            <Header cart={cart} />
             <Discount />
-            <ModalView />
 
             <section className="shop_grid_area section_padding_100">
                 <div className="container">
                     <div className="row">
-                        <Widgets product={product} filterproductsclick={filterproductsclick}/>
+                        <Widgets product={product} filterproductsclick={filterproductsclick} />
 
-                        <Shop product={product} onAdd={onAdd} />
+                        <Shop product={product} onAdd={onAdd} onRemove={onRemove} cart={cart} />
                     </div>
                 </div>
             </section>

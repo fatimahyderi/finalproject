@@ -1,20 +1,20 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Modalview from '../ModalView/ModalView.js'
+import './newarrival.css'
 
 function NewArrival(props) {
-    const { product, onAdd, onRemove } = props
-    const[modalview,getmodalview] = useState({})
+    const { product, onAdd, onRemove, cart } = props
+    const [modalview, getmodalview] = useState({})
 
     const viewModal = (data) => {
         console.log(data.price)
         getmodalview(data)
-        
+
     }
-    console.log(`modalview ${modalview}`)
     return (
         <>
-           
-        <Modalview modalview={modalview} onAdd={onAdd} onRemove={onRemove}/>
+
+            <Modalview modalview={modalview} onAdd={onAdd} onRemove={onRemove} cart={cart} />
 
 
             <section className="new_arrivals_area section_padding_100_0 clearfix">
@@ -56,10 +56,10 @@ function NewArrival(props) {
 
                                         <div className="product-description">
                                             <h4 className="product-price">{data.name}</h4>
-                                            <p>{data.price}</p>
+                                            <p>Rs. <span style={{fontWeight:"bolder", color: "red"}} > {data.price} </span></p>
                                             <p>{data.category}</p>
 
-                                            <button onClick={() => onAdd(data)} className="add-to-cart-btn">ADD TO CART</button>
+                                            <button onClick={() => onAdd(data)} className="cart_btn">ADD TO CART</button>
                                         </div>
                                     </div>
                                 </>
@@ -70,7 +70,7 @@ function NewArrival(props) {
                     </div>
                 </div>
             </section>
-            </>
+        </>
     )
 }
 

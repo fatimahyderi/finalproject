@@ -2,7 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import "./admin.css";
 
- const Admin =() =>{
+ const Admin =(props) =>{
+    const {product, order, users, categories} = props
+    const productlength = product.length
+    console.log(productlength)
+    const orderlength = order.length
+    console.log(orderlength)
+    const userslength = users.length
+    console.log(userslength)
+    const categorylength = categories.length
+    console.log(categorylength)
 return (
     <>
         <div class= "sidebar">
@@ -21,15 +30,15 @@ return (
                         <span >Products</span></Link>
                     </li>
                     <li>
-                        <Link to="..."><span class="las la-shopping-bag"></span>
+                        <Link to="/secretpanel/orders"><span class="las la-shopping-bag"></span>
                         <span>Orders</span></Link>
                     </li>
                     <li>
-                        <Link to="..."><span class="las la-users"></span>
+                        <Link to="/secretpanel/users"><span class="las la-users"></span>
                         <span>Customers</span></Link>
                     </li>
                     <li>
-                        <Link to="/category-form"><span class="las la-receipt"></span>
+                        <Link to="/secretpanel/category-form"><span class="las la-receipt"></span>
                         <span>Categories</span></Link>
                     </li>
                     <li>
@@ -40,7 +49,7 @@ return (
             </div>
         </div>
 
-        <div class="main-content">
+        {/* <div class="main-content">
             <header>
                 <h2 class= "dashboard">
                     <lable for="">
@@ -62,14 +71,14 @@ return (
                     </div>
                 </div>
             </header>
-        </div>
+        </div> */}
 
         <main>
             <div class ="card-container">
             <div class="cards">
                 <div class="card-single">
                     <div>
-                        <h1>54</h1>
+                        <h1>{productlength}</h1>
                         <span>Products</span>                       
                     </div>
                     <div>
@@ -79,7 +88,7 @@ return (
 
                 <div class="card-single">
                     <div>
-                        <h1> 25</h1>
+                        <h1> {orderlength}</h1>
                         <span>Orders</span>                       
                     </div>
                     <div>
@@ -89,7 +98,7 @@ return (
 
                 <div class="card-single">
                     <div>
-                        <h1> 5K</h1>
+                        <h1> {userslength}</h1>
                         <span>Customers</span>                       
                     </div>
                     <div>
@@ -99,7 +108,7 @@ return (
 
                 <div class="card-single">
                     <div>
-                        <h1>12 </h1>
+                        <h1>{categorylength}</h1>
                         <span>Categories</span>                       
                     </div>
                     <div>

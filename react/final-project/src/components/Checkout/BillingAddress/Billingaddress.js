@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Billingaddress(props) {
     const nav = useNavigate();
-    const {cart,clearCart} = props
+    const {cart, clearCart} = props
     const itemPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
     const shippingPrice = cart.length === 0 || itemPrice > 2000 ? 0 : 150;
     const grandtotal = itemPrice + shippingPrice
@@ -31,20 +31,17 @@ function Billingaddress(props) {
     
     const PostData =  (e) => {
         e.preventDefault()
-        console.log(user)
         let formdata = new FormData(e.target);
         const url = "http://localhost:8080/items/order"
         fetch(url, {
             method: "POST",
             body: new URLSearchParams(formdata)
         }).then(res => res.json()).then(response => {
-            console.log(response._id)
             const orderid = response._id
             clearCart()
             nav(`/order/${orderid}`)
         }).catch(function (response) {
             //handle error
-            console.log(response);
           });
         } 
   return (
