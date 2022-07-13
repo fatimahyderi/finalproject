@@ -78,6 +78,31 @@ body {
   /* .myWrapper{
   padding: 40px 0;  
   } */
+
+  .products-title > p {
+    padding:20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 14.8372px;
+    color:red;
+    background-color: blue;
+
+
+  }
+
+  .add-product-container {
+    float: left;
+    padding: 20px;
+    background-color: hsl(0, 0%, 60%);
+  }
+
+  .list-container {
+    float: left;
+    padding: 10px 5px;
+  }
+
+ 
   
    .form > h2 {
     text-align: center;
@@ -110,9 +135,9 @@ body {
     }
   
     .productform > .input-box > label{
-      font-size:12px;
+      font-size:20px;
       font-weight: bold; 
-      color: grey;
+      color: brown;
     }
   
   .container1 > .productform > .input-box > input{

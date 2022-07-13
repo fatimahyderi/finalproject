@@ -1,64 +1,65 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './List.css';
 
 const ProductsList = () => {
 
-    //Getting Product data from MongoDB & setting in a useState
-const [products, setProducts] = React.useState();
+  //Getting Product data from MongoDB & setting in a useState
+  const [products, setProducts] = React.useState();
 
-//useffect runs once when event occurs
-React.useEffect(() =>{   
-     getProductData();
- }, []);
+  //useffect runs once when event occurs
+  React.useEffect(() => {
+    getProductData();
+  }, []);
 
- const getProductData = ()=> {
-   axios.get("http://localhost:8080/items/viewproducts")
-   .then(function (response){    
-     setProducts(response.data);
-      //console.log(response.data);
-   })
-   .catch(function (error){
-       console.log(`error ${error}`);
-   })      
-}
+  const getProductData = () => {
+    axios.get("http://localhost:8080/items/viewproducts")
+      .then(function (response) {
+        setProducts(response.data);
+        //console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(`error ${error}`);
+      })
+  }
 
-const deleteProduct = (id) => {
-  axios.get(`http://localhost:8080/items/deleteproduct/${id}`)
-  .then(function(res) {
-    console.log('product deleted')
-  })
-}
+  const deleteProduct = (id) => {
+    axios.get(`http://localhost:8080/items/deleteproduct/${id}`)
+      .then(function (res) {
+        console.log('product deleted')
+      })
+  }
 
   return (
-    <>  
-        {/* Products List Table */}
+    <>
+      {/* Products List Table */}
 
-  <div className='table_box'>
-        <h1>Product List</h1>
-        <table className="tablestyle">
+
+      <div className='container-table'>
+
+        <h3 className="title">Product List</h3>
+        <table className="product-table">
           <thead>
-              <tr>
-              <th>Sr. No</th>  
-                <th>ID</th>
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Category</th>  
-                <th>Product Size</th>              
-                <th>Product Image</th>  
-                <th>View</th>
-                <th>EDIT</th>
-                <th>DELETE</th>
-              </tr>
-            </thead>
+            <tr>
+              <th>Sr. No</th>
+              <th>ID</th>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Unit Price</th>
+              <th>Category</th>
+              <th>Product Size</th>
+              <th colSpan='3'>Actions</th>
+              
+            </tr>
+          </thead>
           <tbody>
 
             {products && products.map((data, index) => {
               return (
                 <tr key={index}>
-                     <td>
-                    {index +1}
+                  <td>
+                    {index + 1}
                   </td>
 
                   <td>
@@ -80,18 +81,15 @@ const deleteProduct = (id) => {
                     {data.size}
                   </td>
                   <td>
-                    {data.image}
-                  </td>
-                  <td>
                     <Link to={`/secretpanel/view/${data._id}`} className="view"
-                      data-toggle="modal">View</Link>
+                      data-toggle="modal"><i class='fas fa-eye'></i></Link>
                   </td>
                   <td>
                     <Link to={`/secretpanel/edit/${data._id}`} className="edit"
-                      data-toggle="modal">Edit</Link>
+                      data-toggle="modal"><i class='fas fa-pen'></i></Link>
                   </td>
                   <td>
-                    <Link to="/secretpanel/admin" onClick={() => deleteProduct(data._id)}  className="delete">Delete</Link>
+                    <Link to="/secretpanel/admin" onClick={() => deleteProduct(data._id)} className="delete"><i class='fas fa-trash-alt'></i></Link>
                   </td>
                 </tr>
               )
@@ -101,7 +99,7 @@ const deleteProduct = (id) => {
         </table>
 
       </div>
-    
+
     </>
   )
 }

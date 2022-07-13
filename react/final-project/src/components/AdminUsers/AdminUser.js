@@ -1,58 +1,60 @@
 import React from 'react'
+import '../ProductForms/List.css'
 
 function AdminUser(props) {
-    const {users} = props
+  const { users } = props
   return (
-    <div className='table_box'>
-    <h1> Users </h1>
-    <table className="tablestyle">
-      <thead>
+    <div className='container-table'>
+
+      <h3 className="title">Users</h3>
+      <table className="product-table">
+        <thead>
           <tr>
-          <th>Sr. No</th>  
+            <th>Sr. No</th>
             <th>ID</th>
             <th>FirstName</th>
             <th>LastName</th>
             <th>Email</th>
             <th>Phonenumber</th>
-              
-            
+
+
           </tr>
         </thead>
-      <tbody>
+        <tbody>
 
-        {users && users.map((data, index) => {
-          return (
-            
-            <tr key={index}>
-                 <td>
-                {index +1}
-              </td>
+          {users && users.map((data, index) => {
+            return (
 
-              <td>
-                {data._id}
-              </td>
-              <td>
-                {data.firstname}
-              </td>
-              <td>
-                {data.lastname}
-              </td>
-              <td>
-                {data.email}
-              </td>
-              <td>
-                {data.phonenumber}
-              </td>
-            </tr>
-            
-            
-          )
-        })}
+              <tr key={index}>
+                <td>
+                  {index + 1}
+                </td>
 
-      </tbody>
-    </table>
+                <td>
+                  {data._id}
+                </td>
+                <td>
+                  {data.firstname}
+                </td>
+                <td>
+                  {data.lastname}
+                </td>
+                <td>
+                  {data.email}
+                </td>
+                <td>
+                  {data.phonenumber}
+                </td>
+              </tr>
 
-  </div> 
+
+            )
+          })}
+
+        </tbody>
+      </table>
+
+    </div>
   )
 }
 

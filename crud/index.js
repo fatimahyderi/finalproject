@@ -15,9 +15,10 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.API_PORT;
 
-
-app.use(bodyParser.urlencoded({extended:false}));
 app.use(cors());
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}));
+
 app.use('/items', router);
 app.set('view engine', 'ejs');
 app.use('/cosmetic', express.static(path.join(__dirname, 'public/assets/css')))

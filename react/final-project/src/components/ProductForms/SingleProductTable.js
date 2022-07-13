@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import './List.css';
 
 function SingleProductTable() {
 
@@ -35,9 +36,12 @@ useEffect(() =>{
  
   return (
     <>
-      <div className='table_box'>
+    <div className='container-single-product'>
+        <h3 className="title">Product Details</h3>
+        <table className="single-product-table">
+      {/* <div className='conta'>
         <h1>Product List</h1>
-        <table className="tablestyle">
+        <table className="tablestyle"> */}
           <thead>
               <tr>
                 <th>ID</th>
@@ -78,7 +82,7 @@ useEffect(() =>{
           </tbody>
         </table>
 
-        <Link to="/secretpanel/product-form" ><button > Go To Home</button> </Link>
+        <Link to="/secretpanel/product-form" ><button className= 'back-btn'> Go To Home</button> </Link>
 
       </div>
     </>

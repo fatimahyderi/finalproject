@@ -5,7 +5,7 @@ import './shop.css';
 import ModalView from '../ModalView/ModalView';
 
 function Shop(props) {
-    const { product, onAdd, onRemove, cart } = props
+    const { product, onAdd, onRemove, cart, filteredList } = props
     const [modalview, getmodalview] = useState({})
 
     const viewModal = (data) => {
