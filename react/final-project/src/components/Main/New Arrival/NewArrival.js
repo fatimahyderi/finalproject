@@ -58,6 +58,7 @@ function NewArrival(props) {
                                                 </Popup>
                                             
                                         </div>
+                                        
                                     </div>
                                 </>
                             )

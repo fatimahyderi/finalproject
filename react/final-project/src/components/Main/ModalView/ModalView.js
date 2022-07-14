@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 function ModalView(props) {
     const { modalview, onAdd, onRemove } = props
@@ -39,8 +41,12 @@ function ModalView(props) {
 
                                             <div className="cart" >
                                                
-
-                                                <Link to='/main'><button onClick={() => onAdd(modalview)} className="cart-submit">ADD TO CART</button></Link>
+                                            <Popup trigger={<button onClick={() => onAdd(modalview)} className="cart-submit">ADD TO CART</button>}
+                                                position="top center">
+                                                    <div>Product added in cart</div>
+                                                    <Link to='/cart'>View Cart</Link><br/>
+                                                    <Link to='/shop'>Continue shopping</Link>
+                                                </Popup>
                                                 <div className="modal_pro_wishlist">
                                                     <Link to="#"><i className="ti-heart"></i></Link>
                                                 </div>
@@ -50,7 +56,7 @@ function ModalView(props) {
                                                 </div>
                                             </div>
 
-                                            <div className="share_wf mt-30">
+                                            {/* <div className="share_wf mt-30">
                                                 <p>Share With Friend</p>
                                                 <div className="_icon">
                                                     <Link to="/main"><i className="fa fa-facebook" aria-hidden="true"></i></Link>
@@ -58,7 +64,7 @@ function ModalView(props) {
                                                     <Link to="/main"><i className="fa fa-pinterest" aria-hidden="true"></i></Link>
                                                     <Link to="/main"><i className="fa fa-google-plus" aria-hidden="true"></i></Link>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
