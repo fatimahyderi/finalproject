@@ -14,7 +14,7 @@ function OfferArea() {
                             <div className="offer-product-price">
                                 <h3><span className="regular-price">$25.90</span> $15.90</h3>
                             </div>
-                            <Link to="/main" className="btn karl-btn mt-30">Shop Now</Link>
+                            <Link to="/shop" className="btn karl-btn mt-30">Shop Now</Link>
                         </div>
                     </div>
                 </div>

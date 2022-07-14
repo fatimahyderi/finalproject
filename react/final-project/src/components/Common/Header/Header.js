@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-//import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Header(props) {
 	const { cart } = props
 	const cartq = cart.length
 	const itemPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
-	
+
 
 	return (
 		<>
@@ -44,12 +43,12 @@ function Header(props) {
 							<div className="row h-100">
 								<div className="col-12 d-md-flex justify-content-between">
 
-									<div className="header-social-area">
+									{/* <div className="header-social-area">
 										<Link to=""><span className="karl-level">Share</span> <i className="fa fa-pinterest" aria-hidden="true"></i></Link>
 										<Link to=""><i className="fa fa-facebook" aria-hidden="true"></i></Link>
 										<Link to=""><i className="fa fa-twitter" aria-hidden="true"></i></Link>
 										<Link to=""><i className="fa fa-linkedin" aria-hidden="true"></i></Link>
-									</div>
+									</div> */}
 
 									<div className="main-menu-area">
 										<nav className="navbar navbar-expand-lg align-items-start">
@@ -68,9 +67,9 @@ function Header(props) {
 															<Link className="dropdown-item" to="/checkout">Checkout</Link>
 														</div>
 													</li>
-													<li className="nav-item"><Link className="nav-link" to="/main">Dresses</Link></li>
-													<li className="nav-item"><Link className="nav-link" to="/main"><span className="karl-level">hot</span> Shoes</Link></li>
-													<li className="nav-item"><Link className="nav-link" to="/main">Contact</Link></li>
+													<li className="nav-item"><Link className="nav-link" to="/shop">Dresses</Link></li>
+													<li className="nav-item"><Link className="nav-link" to="/shop"><span className="karl-level">hot</span> Shoes</Link></li>
+													<li className="nav-item"><Link className="nav-link" to="/shop">Contact</Link></li>
 												</ul>
 											</div>
 										</nav>

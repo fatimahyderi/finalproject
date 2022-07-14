@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import { Link } from 'react-router-dom';
 import Modalview from '../ModalView/ModalView.js'
 import './newarrival.css'
 
@@ -28,17 +31,6 @@ function NewArrival(props) {
                     </div>
                 </div>
 
-                <div className="karl-projects-menu mb-100">
-                    <div className="text-center portfolio-menu">
-                        <button className="btn active" data-filter="*">ALL</button>
-                        <button className="btn" data-filter=".women">WOMAN</button>
-                        <button className="btn" data-filter=".man">MAN</button>
-                        <button className="btn" data-filter=".access">ACCESSORIES</button>
-                        <button className="btn" data-filter=".shoes">shoes</button>
-                        <button className="btn" data-filter=".kids">KIDS</button>
-                    </div>
-                </div>
-
                 <div className="container">
                     <div className="row karl-new-arrivals">
 
@@ -56,10 +48,15 @@ function NewArrival(props) {
 
                                         <div className="product-description">
                                             <h4 className="product-price">{data.name}</h4>
-                                            <p>Rs. <span style={{fontWeight:"bolder", color: "red"}} > {data.price} </span></p>
+                                            <p>Rs. <span style={{ fontWeight: "bolder", color: "red" }} > {data.price} </span></p>
                                             <p>{data.category}</p>
-
-                                            <button onClick={() => onAdd(data)} className="cart_btn">ADD TO CART</button>
+                                            <Popup trigger={<button onClick={() => onAdd(data)} className="cart_btn">ADD TO CART</button>}
+                                                position="top center">
+                                                    <div>Product added in cart</div>
+                                                    <Link to='/cart'>View Cart</Link><br/>
+                                                    <Link to='/shop'>Continue shopping</Link>
+                                                </Popup>
+                                            
                                         </div>
                                     </div>
                                 </>

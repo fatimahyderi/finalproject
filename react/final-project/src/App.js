@@ -252,32 +252,7 @@ function App() {
 				alert("email not found");
 			})
 
-		// let formdata = new FormData(e.target);
-		// const url = "http://localhost:8080/items/registeruser"
-		// fetch(url, {
-		//     method: "POST",
-		//     body: new URLSearchParams(formdata)
-		// }).then(res => res.json()).then(response => {
-		//     console.log(response);
-		// }).catch(function (response) {
-		//     //handle error
-		//     console.log(response);
-		//   });
-
-
-
-
-
-
-		// if(data.status === 422 || !data) {
-		//     window.alert("invalid Registration");
-		//     console.log("invalid registration")
-		// } else {
-		//     window.alert("Registration succesful");
-		//     console.log("Registration successful");
-
-
-		// }
+			
 	}
 
 	return (

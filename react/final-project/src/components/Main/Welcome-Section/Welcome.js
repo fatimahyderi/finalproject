@@ -14,7 +14,7 @@ function Welcome() {
                                     <div className="welcome_slide_text">
                                         <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
                                         <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Fashion Trends</h2>
-                                        <Link to="/main" className="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Shop Now</Link>
+                                        <Link to="/shop" className="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Shop Now</Link>
                                     </div>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@ function Welcome() {
                                     <div className="welcome_slide_text">
                                         <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
                                         <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Summer Collection</h2>
-                                        <Link to="/main" className="btn karl-btn" data-animation="fadeInLeftBig" data-delay="1s" data-duration="500ms">Check Collection</Link>
+                                        <Link to="/shop" className="btn karl-btn" data-animation="fadeInLeftBig" data-delay="1s" data-duration="500ms">Check Collection</Link>
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@ function Welcome() {
                                     <div className="welcome_slide_text">
                                         <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
                                         <h2 data-animation="bounceInDown" data-delay="500ms" data-duration="500ms">Women Fashion</h2>
-                                        <Link to="/main" className="btn karl-btn" data-animation="fadeInRightBig" data-delay="1s" data-duration="500ms">Check Collection</Link>
+                                        <Link to="/shop" className="btn karl-btn" data-animation="fadeInRightBig" data-delay="1s" data-duration="500ms">Check Collection</Link>
                                     </div>
                                 </div>
                             </div>

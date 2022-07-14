@@ -9,7 +9,7 @@ function TopCategory() {
 				<div className="catagory-content">
 					<h6>On Accesories</h6>
 					<h2>Sale 30%</h2>
-					<Link to="/main" className="btn karl-btn">SHOP NOW</Link>
+					<Link to="/shop" className="btn karl-btn">SHOP NOW</Link>
 				</div>
 			</div>
 
@@ -17,7 +17,7 @@ function TopCategory() {
 				<div className="catagory-content">
 					<h6>in Bags excepting the new collection</h6>
 					<h2>Designer bags</h2>
-					<Link to="/main" className="btn karl-btn">SHOP NOW</Link>
+					<Link to="/shop" className="btn karl-btn">SHOP NOW</Link>
 				</div>
 			</div>
 		</section>
