@@ -9,7 +9,7 @@ function NewArrival(props) {
     const { product, onAdd, onRemove, cart } = props
     const [modalview, getmodalview] = useState({})
     
-     const items = product.slice(0, 6)
+     const items = product.slice(Math.max(product.length - 6, 0))
      console.log(items);
     
 
