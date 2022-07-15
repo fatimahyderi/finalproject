@@ -7,7 +7,7 @@ import Shop from './Shop/Shop';
 
 function Product(props) {
     const { product, onAdd, cart, onRemove } = props
-    const [filterproducts, setFilterProducts] = useState()
+    //const [filterproducts, setFilterProducts] = useState()
     // const filterproductsclick = (cat_name) => {
     //     const newproducts = product.filter((cat) => {
     //         return cat.category === cat_name;
@@ -16,20 +16,20 @@ function Product(props) {
     //     setFilterProducts(newproducts)
     //     console.log('done')
     // }
-    const filterproductsclick = (data) => {
-        setFilterProducts(data);
-    }
-    function getFilteredList() {
-        // Avoid filter when selectedCategory is null
-        if (!filterproducts) {
-            return product;
-        }
-        return product.filter((item) => item.category === filterproducts);
-    }
-    var filteredList = useMemo(getFilteredList, [filterproducts, product]);
+    // const filterproductsclick = (data) => {
+    //     setFilterProducts(data);
+    // }
+    // function getFilteredList() {
+    //     // Avoid filter when selectedCategory is null
+    //     if (!filterproducts) {
+    //         return product;
+    //     }
+    //     return product.filter((item) => item.category === filterproducts);
+    // }
+    // var filteredList = useMemo(getFilteredList, [filterproducts, product]);
 
-    console.log(`filter products ${filterproducts}`)
-    console.log(filteredList)
+    // console.log(`filter products ${filterproducts}`)
+    // console.log(filteredList)
    
 
     return (
@@ -39,10 +39,10 @@ function Product(props) {
 
             <section className="shop_grid_area section_padding_100">
                 <div className="container">
-                    <div className="row">
-                        <Widgets product={product} filterproductsclick={filterproductsclick} />
+                     <div className="row">
+                       {/* <Widgets product={product} filterproductsclick={filterproductsclick} /> */}
 
-                        <Shop product={product} filteredList={filteredList} onAdd={onAdd} onRemove={onRemove} cart={cart} />
+                        <Shop product={product} onAdd={onAdd} onRemove={onRemove} cart={cart} />
                     </div>
                 </div>
             </section>

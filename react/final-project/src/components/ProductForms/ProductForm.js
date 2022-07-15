@@ -11,11 +11,19 @@ export default function AddProductForm() {
     { p_name: "", p_price: "", p_quantity: "", p_image: "", p_category: "" }
   )
 
+  // const [image, setImage] = useState();
+  // const [imageName, setImageName] = useState("");
+
+  // const saveFile = (e) => {
+  //   setImage(e.target.files[0]);
+  //   //setImageName(e.target.files[0].name);
+  // };
   const [status, setStatus] = useState();
 
   let name, value;
+  // let imagefile;
   function handleInputChange(e) {
-    console.log(e);
+    //imagefile = (e.target.files[0]);
     name = e.target.name;
     value = e.target.value;
 
@@ -29,6 +37,9 @@ export default function AddProductForm() {
     // submitToApi(formData)
 
     let formData = new FormData(e.target);
+    // formData.append("file", image);
+    //formData.append("fileName", imageName);
+    // formData.append('file', imagefile)
     //const {p_name, p_price, p_category, p_image, p_quantity} = formData;
 
     // Posting ProductForm data To MongoDB
@@ -117,7 +128,7 @@ export default function AddProductForm() {
               <div className="item-details">
                 <div className="input-box">
                   <label for="quantity">Product Image</label><br />
-                  <input onChange={e => handleInputChange(e)} name="p_image" value={formData.p_image} type="text" />
+                  <input onChange={e => handleInputChange(e)} name="p_image" value={formData.p_image} type="file" />
                 </div>
               </div>
             </div>

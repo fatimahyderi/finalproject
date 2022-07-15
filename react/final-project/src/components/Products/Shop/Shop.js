@@ -1,11 +1,23 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ReactPaginate from 'react-paginate';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import './shop.css';
 import ModalView from '../ModalView/ModalView';
+import Widgets from '../Widgets/Widgets';
 
 function Shop(props) {
-    const { product, onAdd, onRemove, cart, filteredList } = props
+    const { product, onAdd, onRemove, cart } = props
+    const [productdata,setProductData] = useState(product)
+    const filterResult = (catItem) => {
+        const result = product.filter((curData) => {
+            return curData.category === catItem;
+        });
+        setProductData(result)
+    }
+    console.log(productdata)
+
     const [modalview, getmodalview] = useState({})
 
     const viewModal = (data) => {
@@ -17,7 +29,7 @@ function Shop(props) {
     const productsperpage = 6;
     const pagesVisited = pageNumber * productsperpage
 
-    const displayProducts = product.slice(pagesVisited, pagesVisited + productsperpage).map((data) => {
+    const displayProducts = productdata.slice(pagesVisited, pagesVisited + productsperpage).map((data) => {
         return (
             <div className="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s">
 
@@ -35,24 +47,31 @@ function Shop(props) {
                     <p>{data.name}</p>
                     <p>{data.brand}</p>
                     <p>{data.color}</p>
+                    <Popup trigger={<Link to='' className="add-to-cart-btn" onClick={() => onAdd(data)}>ADD TO CART</Link>}
+                        position="top center">
+                        <div>Product added in cart</div>
+                        <Link to='/cart'><button>View Cart</button></Link><br />
+                        <Link to='/shop'><button>Continue shopping</button></Link>
+                    </Popup>
 
-                    <Link to='' className="add-to-cart-btn" onClick={() => onAdd(data)}>ADD TO CART</Link>
                 </div>
             </div>
         )
     })
 
 
-    const pageCount = Math.ceil(product.length / productsperpage)
+    const pageCount = Math.ceil(productdata.length / productsperpage)
     const handlePageClick = ({ selected }) => {
         setPageNumber(selected)
     }
     return (
+        <>
+        <Widgets filterResult={filterResult} />
         <div className="col-12 col-md-8 col-lg-9">
-            
+
             <div className="shop_grid_product_area">
                 <div className="row">
-                <ModalView modalview={modalview} onAdd={onAdd} onRemove={onRemove} cart={cart} />
+                    <ModalView modalview={modalview} onAdd={onAdd} onRemove={onRemove} cart={cart} />
                     {displayProducts}
                 </div>
             </div>
@@ -75,9 +94,10 @@ function Shop(props) {
                 />
 
             </div>
-            
+
 
         </div>
+        </>
     )
 }
 

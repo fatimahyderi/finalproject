@@ -54,7 +54,7 @@ function Cart3section(props) {
                                     <li><span>Shipping</span> <span>{shippingPrice}</span></li>
                                     <li><span><strong>Total</strong></span> <span><strong>{itemPrice + shippingPrice}</strong></span></li>
                                 </ul>
-                                <Link to={`/checkout`} >Proceed to checkout</Link>
+                                <Link to={`/checkout`} className="btn karl-checkout-btn" >Proceed to checkout</Link>
                             </div>
                         </div>
                     </div>

@@ -122,7 +122,7 @@ function Billingaddress(props) {
                                             </div>
                                         </div> */}
                                         {/* <a href="index.html" class="btn karl-checkout-btn">Place Order</a> */}
-                                        <button  className="btn karl-checkout-btn" type='submit'>Place Order</button>
+                                        <Link to=''  className="btn karl-checkout-btn" type='submit'>Place Order</Link>
                                     </div>
                                 </form>
                             </div>

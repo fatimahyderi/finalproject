@@ -50,15 +50,15 @@ function NewArrival(props) {
                                             <h4 className="product-price">{data.name}</h4>
                                             <p>Rs. <span style={{ fontWeight: "bolder", color: "red" }} > {data.price} </span></p>
                                             <p>{data.category}</p>
-                                            <Popup trigger={<button onClick={() => onAdd(data)} className="cart_btn">ADD TO CART</button>}
+                                            <Popup trigger={<Link to='' className="add-to-cart-btn" onClick={() => onAdd(data)}>ADD TO CART</Link>}
                                                 position="top center">
                                                     <div>Product added in cart</div>
-                                                    <Link to='/cart'>View Cart</Link><br/>
-                                                    <Link to='/shop'>Continue shopping</Link>
+                                                    <Link to='/cart'><button>View Cart</button></Link><br/>
+                                                    <Link to='/shop'><button>Continue shopping</button></Link>
                                                 </Popup>
                                             
                                         </div>
-                                        
+
                                     </div>
                                 </>
                             )

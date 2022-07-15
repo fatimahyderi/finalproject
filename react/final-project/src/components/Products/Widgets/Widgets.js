@@ -3,7 +3,7 @@ import axios from 'axios'
 import Shop from '../Shop/Shop';
 
 function Widgets(props) {
-    const { product,filterproductsclick } = props
+    const { product,filterResult } = props
     const [category, setCategory] = useState();
    
 
@@ -44,10 +44,11 @@ function Widgets(props) {
                                 {category && category.map((data, key) => {
                                     return (
                                         <>
-                                            <li value={data.name} onClick={() => filterproductsclick(data.name)}>{data.name}</li>
+                                            <li value={data.name} onClick={() => filterResult(data.name)}>{data.name}</li>
                                         </>
                                     )
                                 })}
+
                                 {/* <li onClick={() => filterproductsclick('kids')}>
                                     Kids wear
 
