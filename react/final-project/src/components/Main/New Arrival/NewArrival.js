@@ -8,6 +8,10 @@ import './newarrival.css'
 function NewArrival(props) {
     const { product, onAdd, onRemove, cart } = props
     const [modalview, getmodalview] = useState({})
+    
+     const items = product.slice(0, 6)
+     console.log(items);
+    
 
     const viewModal = (data) => {
         console.log(data.price)
@@ -34,7 +38,7 @@ function NewArrival(props) {
                 <div className="container">
                     <div className="row karl-new-arrivals">
 
-                        {product && product.map((data, key) => {
+                        {items && items.map((data, key) => {
                             return (
                                 <>
                                     <div className="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s" key={key}>
@@ -52,11 +56,11 @@ function NewArrival(props) {
                                             <p>{data.category}</p>
                                             <Popup trigger={<Link to='' className="add-to-cart-btn" onClick={() => onAdd(data)}>ADD TO CART</Link>}
                                                 position="top center">
-                                                    <div>Product added in cart</div>
-                                                    <Link to='/cart'><button>View Cart</button></Link><br/>
-                                                    <Link to='/shop'><button>Continue shopping</button></Link>
-                                                </Popup>
-                                            
+                                                <div>Product added in cart</div>
+                                                <Link to='/cart'><button>View Cart</button></Link><br />
+                                                <Link to='/shop'><button>Continue shopping</button></Link>
+                                            </Popup>
+
                                         </div>
 
                                     </div>

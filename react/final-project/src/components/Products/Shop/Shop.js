@@ -51,7 +51,7 @@ function Shop(props) {
                         position="top center">
                         <div>Product added in cart</div>
                         <Link to='/cart'><button>View Cart</button></Link><br />
-                        <Link to='/shop'><button>Continue shopping</button></Link>
+                    
                     </Popup>
 
                 </div>
