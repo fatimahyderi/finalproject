@@ -128,7 +128,7 @@ export default function AddProductForm() {
               <div className="item-details">
                 <div className="input-box">
                   <label for="quantity">Product Image</label><br />
-                  <input onChange={e => handleInputChange(e)} name="p_image" value={formData.p_image} type="file" />
+                  <input onChange={e => handleInputChange(e)} name="p_image" value={formData.p_image} type="text" />
                 </div>
               </div>
             </div>
