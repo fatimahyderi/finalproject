@@ -17,7 +17,7 @@ const port = process.env.PORT || process.env.API_PORT;
 var corsOptions = {
   origin:  process.env.FRONT_URI,
 }
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}));
 
