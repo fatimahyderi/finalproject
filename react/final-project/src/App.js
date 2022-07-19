@@ -4,25 +4,25 @@
 import { Routes, Route } from "react-router-dom";
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import Product from './components/Products/Product'
-import Main from "./components/Main/Main";
-import ProductDesrip from "./components/Product Des/ProductDesrip";
-import Cart from "./components/Cart/Cart";
-import Checkout from "./components/Checkout/Checkout";
+import Product from './components/Mainpages/Products/Product'
+import Main from "./components/Mainpages/Main/Main";
+import ProductDesrip from "./components/Mainpages/Product Des/ProductDesrip";
+import Cart from "./components/Mainpages/Cart/Cart";
+import Checkout from "./components/Mainpages/Checkout/Checkout";
 import React from "react";
 import { useState, useEffect } from 'react';
 import axios from 'axios'
-import Registeruser from "./components/Registeruser/Registeruser";
-import Login from "./components/Login/Login";
+import Registeruser from "./components/Mainpages/Registeruser/Registeruser";
+import Login from "./components/Mainpages/Login/Login";
 import { useNavigate } from "react-router-dom";
-import Order from "./components/OrderPage/Order";
-import Admin from "./components/AdminPanel/Admin";
-import ProductForm from "./components/ProductForms/ProductForm";
-import SingleProductTable from "./components/ProductForms/SingleProductTable";
-import CategoryForm from "./components/ProductForms/CategoryForm";
-import EditProductForm from "./components/ProductForms/EditProductForm";
-import AdminOrder from "./components/AdminOrder/AdminOrder";
-import AdminUser from "./components/AdminUsers/AdminUser";
+import Order from "./components/Mainpages/OrderPage/Order";
+import Admin from "./components/Adminview/AdminPanel/Admin";
+import ProductForm from "./components/Adminview/ProductForms/ProductForm";
+import SingleProductTable from "./components/Adminview/ProductForms/SingleProductTable";
+import CategoryForm from "./components/Adminview/ProductForms/CategoryForm";
+import EditProductForm from "./components/Adminview/ProductForms/EditProductForm";
+import AdminOrder from "./components/Adminview/AdminOrder/AdminOrder";
+import AdminUser from "./components/Adminview/AdminUsers/AdminUser";
 
 
 export const ShoppingCartContext = React.createContext();
