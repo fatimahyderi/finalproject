@@ -8,7 +8,7 @@ function Order() {
     const { id } = useParams();
     const [order, getOrder] = useState([]);
     const getOrderData = () => {
-        axios.get(`http://localhost:8080/items/orderdata/${id}`)
+        axios.get(`/items/orderdata/${id}`)
             .then(function (response) {
                 getOrder(response.data);
             })

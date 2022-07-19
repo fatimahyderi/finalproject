@@ -31,7 +31,7 @@ const CategoryForm = (props) => {
         let formData = new FormData(event.target);
         //const {c_name} = formData;
 
-        fetch('http://localhost:8080/items/category', {
+        fetch('/items/category', {
             method: 'POST',
             // body: JSON.stringify({ c_name, c_category})
             body: new URLSearchParams(formData)
