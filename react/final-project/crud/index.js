@@ -26,6 +26,6 @@ app.use('/cosmetic', express.static(path.join(__dirname, 'public/assets/css')))
 
 
 
-app.listen(port, '0.0.0.0',  function () {
+app.listen('0.0.0.0',  function () {
   console.log(`Port is now running @ ${port}`)
 });
