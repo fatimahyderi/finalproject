@@ -16,8 +16,10 @@ const app = express();
 const port = process.env.PORT || process.env.API_PORT;
 var corsOptions = {
   origin:  process.env.FRONT_URI,
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, variousSmartTVs) choke on 204
+  credentials:true
 }
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}));
 
