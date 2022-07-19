@@ -76,7 +76,7 @@ function App() {
 	// Getting products from database
 	const [product, getProduct] = useState([]);
 	const getProductData = () => {
-		axios.get('http://localhost:8080/items')
+		axios.get('/items')
 			.then(function (response) {
 				// handle success
 				getProduct(response.data);
