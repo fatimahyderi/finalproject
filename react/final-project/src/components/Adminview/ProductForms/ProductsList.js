@@ -12,7 +12,7 @@ const ProductsList = () => {
   }, []);
 
   const getProductData = () => {
-    axios.get("http://localhost:8080/items/viewproducts")
+    axios.get(`${process.env.REACT_APP_SERVER_PATH}/items/viewproducts`)
       .then(function (response) {
         setProducts(response.data);
       })
@@ -22,7 +22,7 @@ const ProductsList = () => {
   }
 
   const deleteProduct = (id) => {
-    axios.get(`http://localhost:8080/items/deleteproduct/${id}`)
+    axios.get(`${process.env.REACT_APP_SERVER_PATH}/items/deleteproduct/${id}`)
       .then(function (res) {
         console.log('product deleted')
       })

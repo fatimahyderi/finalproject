@@ -33,7 +33,7 @@ function Billingaddress(props) {
         console.log("orderbutton")
         e.preventDefault()
         let formdata = new FormData(e.target);
-        const url = "http://localhost:8080/items/order"
+        const url = `${process.env.REACT_APP_SERVER_PATH}/items/order`
         fetch(url, {
             method: "POST",
             body: new URLSearchParams(formdata)

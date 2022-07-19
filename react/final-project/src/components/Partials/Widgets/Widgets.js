@@ -7,7 +7,7 @@ function Widgets(props) {
 
     useEffect(() => {
         const getCategoryData = () => {
-            axios.get('http://localhost:8080/items/categoryFormData')
+            axios.get(`${process.env.REACT_APP_SERVER_PATH}/items/categoryFormData`)
                 .then(function (response) {
                     setCategory(response.data);
                 })

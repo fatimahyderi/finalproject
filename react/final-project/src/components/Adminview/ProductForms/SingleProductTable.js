@@ -14,7 +14,7 @@ const [product, getProduct] = React.useState([]);
 useEffect(() =>{   
 
   const getProductData = ()=> {
-    axios.get(`http://localhost:8080/items/view/${id}`)
+    axios.get(`${process.env.REACT_APP_SERVER_PATH}/items/view/${id}`)
     .then(function (response){    
       getProduct(response.data);
       console.log(response.data)

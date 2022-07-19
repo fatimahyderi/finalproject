@@ -54,7 +54,7 @@ function App() {
 		const { firstname, lastname, email, password, checkpassword, phonenumber } = registeruser
 		if (firstname && lastname && phonenumber && email && password && (password === checkpassword)) {
 			let formdata = new FormData(e.target);
-			const url = "http://localhost:8080/items/registeruser"
+			const url = `${process.env.REACT_APP_SERVER_PATH}/items/registeruser`
 			fetch(url, {
 				method: "POST",
 				body: new URLSearchParams(formdata)

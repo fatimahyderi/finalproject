@@ -16,7 +16,7 @@ function ProductDesrip(props) {
     const { onAdd, cart } = props;
     const [product, getProduct] = useState({});
     const getProductData = () => {
-        axios.get(`http://localhost:8080/items/product/${id}`)
+        axios.get(`${process.env.REACT_APP_SERVER_PATH}/items/product/${id}`)
             .then(function (response) {
                 getProduct(response.data);
             })
