@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.PORT || process.env.API_PORT;
 var corsOptions = {
-  origin:  process.env.FRONT_URI,
+  origin:  "https://cg-karl-fashion-react.herokuapp.com/main",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, variousSmartTVs) choke on 204
   credentials:true
 }
