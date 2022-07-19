@@ -54,7 +54,7 @@ function App() {
 		const { firstname, lastname, email, password, checkpassword, phonenumber } = registeruser
 		if (firstname && lastname && phonenumber && email && password && (password === checkpassword)) {
 			let formdata = new FormData(e.target);
-			const url = "/items/registeruser"
+			const url = "http://localhost:8080/items/registeruser"
 			fetch(url, {
 				method: "POST",
 				body: new URLSearchParams(formdata)
@@ -76,7 +76,7 @@ function App() {
 	// Getting products from database
 	const [product, getProduct] = useState([]);
 	const getProductData = () => {
-		axios.get('/items')
+		axios.get('http://localhost:8080/items')
 			.then(function (response) {
 				// handle success
 				getProduct(response.data);
@@ -98,7 +98,7 @@ function App() {
 
 	const [order, getOrder] = useState([]);
 	const getOrderData = () => {
-		axios.get('/items/orderdata')
+		axios.get('http://localhost:8080/items/orderdata')
 			.then(function (response) {
 				// handle success
 				getOrder(response.data);
@@ -120,7 +120,7 @@ function App() {
 
 	const [users, getUsers] = useState([]);
 	const getUsersData = () => {
-		axios.get('/items/users')
+		axios.get('http://localhost:8080/items/users')
 			.then(function (response) {
 				// handle success
 				getUsers(response.data);
@@ -142,7 +142,7 @@ function App() {
 
 	const [categories, getCategories] = useState([]);
 	const getCategoriesData = () => {
-		axios.get('/items/category')
+		axios.get('http://localhost:8080/items/category')
 			.then(function (response) {
 				// handle success
 				getCategories(response.data);
@@ -223,7 +223,7 @@ function App() {
 		console.log(loginUser)
 
 		const userEmail = loginUser.email
-		axios.get(`/items/users/${userEmail}`)
+		axios.get(`http://localhost:8080/items/users/${userEmail}`)
 			.then(function (response) {
 				if (loginUser.email === 'admin12345@gmail.com') {
 					if (loginUser.password === response.data.password) {

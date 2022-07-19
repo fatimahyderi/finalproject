@@ -16,7 +16,7 @@ const [products, setProducts] = useState(
 useEffect(() =>{  
     async function getProductData() {
       try {
-        const products = await axios.get(`/items/view/${id}`)
+        const products = await axios.get(`http://localhost:8080/items/view/${id}`)
         setProducts(products.data);
       } catch (error) {
         console.log("something is wrong");
@@ -42,7 +42,7 @@ function handleInputChange(event) {
 
  async function handleSubmit(e) {
     e.preventDefault()
-     const apiUrl = `/items/updateproduct/${id}`;
+     const apiUrl = `http://localhost:8080/items/updateproduct/${id}`;
     fetch(apiUrl, {
         method: 'PUT',
         headers: {
@@ -63,7 +63,7 @@ const [ category, setCategory] = useState();
 
 useEffect(() =>{      
  const getCategoryData = ()=> {    
-     axios.get('/items/categoryFormData')
+     axios.get('http://localhost:8080/items/categoryFormData')
      .then(function (response){    
       setCategory(response.data);
      })
@@ -134,6 +134,7 @@ useEffect(() =>{
               <label for="category">Product Category</label><br />
 
               <select onChange={handleInputChange} name="p_category" value={products.p_category} placeholder={products.category} id="category" > 
+
 
                 {category && category.map((data, key) => {                               
                     return (                                        

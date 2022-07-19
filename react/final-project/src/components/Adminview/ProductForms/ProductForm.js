@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import "./form.css";
 import ProductsList from "./ProductsList";
 import './List.css';
@@ -25,7 +26,7 @@ export default function AddProductForm() {
     e.preventDefault()
 
     let formData = new FormData(e.target);
-    const apiUrl = '/items/products';
+    const apiUrl = 'http://localhost:8080/items/products';
 
     fetch(apiUrl, {
       method: 'POST',
@@ -42,7 +43,7 @@ export default function AddProductForm() {
   useEffect(() => {
 
     const getCategoryData = () => {
-      axios.get('/items/categoryFormData')
+      axios.get('http://localhost:8080/items/categoryFormData')
         .then(function (response) {
           setCategory(response.data);
         })
