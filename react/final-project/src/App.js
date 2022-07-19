@@ -76,7 +76,7 @@ function App() {
 	// Getting products from database
 	const [product, getProduct] = useState([]);
 	const getProductData = () => {
-		axios.get('/items')
+		axios.get('https://cg-karl-fashion.herokuapp.com/items')
 			.then(function (response) {
 				// handle success
 				getProduct(response.data);
