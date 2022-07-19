@@ -76,7 +76,7 @@ function App() {
 	// Getting products from database
 	const [product, getProduct] = useState([]);
 	const getProductData = () => {
-		axios.get(`${process.env.REACT_APP_SERVER_PATH}items`)
+		axios.get(`${process.env.REACT_APP_SERVER_PATH}/items`)
 			.then(function (response) {
 				// handle success
 				getProduct(response.data);
@@ -98,7 +98,7 @@ function App() {
 
 	const [order, getOrder] = useState([]);
 	const getOrderData = () => {
-		axios.get('http://localhost:8080/items/orderdata')
+		axios.get(`${process.env.REACT_APP_SERVER_PATH}/items/orderdata`)
 			.then(function (response) {
 				// handle success
 				getOrder(response.data);
@@ -120,7 +120,7 @@ function App() {
 
 	const [users, getUsers] = useState([]);
 	const getUsersData = () => {
-		axios.get('http://localhost:8080/items/users')
+		axios.get(`${process.env.REACT_APP_SERVER_PATH}/items/users`)
 			.then(function (response) {
 				// handle success
 				getUsers(response.data);
@@ -142,7 +142,7 @@ function App() {
 
 	const [categories, getCategories] = useState([]);
 	const getCategoriesData = () => {
-		axios.get('http://localhost:8080/items/category')
+		axios.get(`${process.env.REACT_APP_SERVER_PATH}/items/category`)
 			.then(function (response) {
 				// handle success
 				getCategories(response.data);
@@ -223,7 +223,7 @@ function App() {
 		console.log(loginUser)
 
 		const userEmail = loginUser.email
-		axios.get(`http://localhost:8080/items/users/${userEmail}`)
+		axios.get(`${process.env.REACT_APP_SERVER_PATH}/items/users/${userEmail}`)
 			.then(function (response) {
 				if (loginUser.email === 'admin12345@gmail.com') {
 					if (loginUser.password === response.data.password) {
