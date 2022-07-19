@@ -79,6 +79,7 @@ function App() {
 		axios.get(`${process.env.REACT_APP_SERVER_PATH}/items`)
 			.then(function (response) {
 				// handle success
+				console.log(response.data)
 				getProduct(response.data);
 			})
 			.catch(function (error) {
